@@ -35,7 +35,7 @@
                                     </td>
                                     <td><strong>{{ __($item->code) }}</strong></td>
                                     <td>
-                                        @if($item->is_default == Status::YES)
+                                        @if($item->is_default == App\Constants\Status::YES)
                                             <span class="badge badge--success">@lang('Default')</span>
                                         @else
                                             <span class="badge badge--warning">@lang('Selectable')</span>

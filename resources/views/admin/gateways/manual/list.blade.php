@@ -34,7 +34,7 @@
                                                 <i class="la la-pencil"></i>@lang('Edit')
                                             </a>
 
-                                            @if($gateway->status == Status::DISABLE)
+                                            @if($gateway->status == App\Constants\Status::DISABLE)
                                                 <button class="btn btn-sm btn-outline--success confirmationBtn" data-question="@lang('Are you sure to enable this gateway?')" data-action="{{ route('admin.gateway.manual.status',$gateway->id) }}">
                                                     <i class="la la-eye"></i>@lang('Enable')
                                                 </button>
