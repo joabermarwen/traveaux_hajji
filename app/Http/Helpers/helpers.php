@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Cache;
 
 function systemDetails()
 {
-    $system['name'] = 'microlab';
+    $system['name'] = 'on traveaux';
     $system['version'] = '3.0';
     $system['build_version'] = '5.0.9';
     return $system;
