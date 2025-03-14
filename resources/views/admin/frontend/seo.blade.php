@@ -25,7 +25,7 @@
                                     <select name="keywords[]" class="form-control select2-auto-tokenize" multiple="multiple" required>
                                         @if (@$seo->data_values->keywords)
                                             @foreach ($seo->data_values->keywords as $option)
-                                                <option value="{{ $option }}" selected>{{ __($option) }}</option>
+                                                <option value="{{ $option }}" selected>{{ trans_case($option) }}</option>
                                             @endforeach
                                         @endif
                                     </select>

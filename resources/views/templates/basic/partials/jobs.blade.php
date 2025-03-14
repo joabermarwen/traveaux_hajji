@@ -20,7 +20,7 @@
                     </div>
                     <h5 class="title">
                         <a href="{{ route('job.details', [$job->id, slug($job->title)]) }}">
-                            {{ __($job->title) }}
+                            {{ trans_case($job->title) }}
                         </a>
                     </h5>
                     <ul class="job__info">
@@ -39,7 +39,7 @@
         </div>
     @empty
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
-            <h3 class="text--base text-center">{{ __($emptyMessage) }}</h3>
+            <h3 class="text--base text-center">{{ trans_case($emptyMessage) }}</h3>
         </div>
     @endforelse
 </div>

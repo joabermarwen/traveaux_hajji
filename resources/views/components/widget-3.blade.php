@@ -14,7 +14,7 @@
 
     <div class="widget-two__content">
         <h3 class="text-{{ $color }}">{{ $value }}</h3>
-        <p class="text-{{ $color }}">{{ __($title) }}</p>
+        <p class="text-{{ $color }}">{{ trans_case($title) }}</p>
     </div>
     @if ($link)
         <a href="{{ $link }}" class="widget-two__btn">@lang('View All')</a>

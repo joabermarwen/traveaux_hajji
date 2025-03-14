@@ -23,20 +23,20 @@
                                                 <div class="thumb">
                                                     <img src="{{ getImage(getFilePath('subcategory') . '/' . $subCategory->image, getFileSize('subcategory')) }}" class="plugin_bg">
                                                 </div>
-                                                <span class="name">{{ __(@$subCategory->name) }}</span>
+                                                <span class="name">{{ trans_case(@$subCategory->name) }}</span>
                                             </div>
                                         </td>
                                         <td>
-                                            {{ __(strLimit($subCategory->description, 30)) }}
+                                            {{ trans_case(strLimit($subCategory->description, 30)) }}
                                             @if (strlen($subCategory->description) > 30)
                                             <br>
-                                            <small class="text--primary catDescription" role="button" data-cat_details="{{ __($subCategory->description) }}">
+                                            <small class="text--primary catDescription" role="button" data-cat_details="{{ trans_case($subCategory->description) }}">
                                                 @lang('Read More')
                                             </small>
                                             @endif
                                         </td>
                                         <td>
-                                            {{ __(@$subCategory->category->name) }}
+                                            {{ trans_case(@$subCategory->category->name) }}
                                         </td>
                                         <td> @php echo $subCategory->statusBadge; @endphp </td>
                                         <td>
@@ -58,7 +58,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                        <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                     </tr>
                                 @endforelse
 

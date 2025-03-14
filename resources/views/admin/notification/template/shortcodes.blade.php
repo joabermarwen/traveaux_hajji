@@ -16,7 +16,7 @@
                                 {{-- blade-formatter-disable --}}
                                 <td><span class="short-codes">@php echo "{{". $shortcode ."}}"  @endphp</span></td>
                                 {{-- blade-formatter-enable --}}
-                                <td>{{ __($key) }}</td>
+                                <td>{{ trans_case($key) }}</td>
                             </tr>
                             @endforeach
                             @foreach(gs('global_shortcodes') as $shortCode => $codeDetails)
@@ -24,7 +24,7 @@
                                 {{-- blade-formatter-disable --}}
                                 <td><span class="short-codes">@{{@php echo $shortCode @endphp}}</span></td>
                                 {{-- blade-formatter-enable --}}
-                                <td>{{ __($codeDetails) }}</td>
+                                <td>{{ trans_case($codeDetails) }}</td>
                             </tr>
                             @endforeach
                         </tbody>

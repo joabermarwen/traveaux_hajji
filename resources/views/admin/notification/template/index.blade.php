@@ -19,8 +19,8 @@
                         <tbody>
                         @forelse($templates as $template)
                             <tr>
-                                <td>{{ __($template->name) }}</td>
-                                <td>{{ __($template->subject) }}</td>
+                                <td>{{ trans_case($template->name) }}</td>
+                                <td>{{ trans_case($template->subject) }}</td>
                                 <td>
                                     <div class="action-btns">
                                         <div class="btn-group btn-group-sm">
@@ -40,7 +40,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                             </tr>
                         @endforelse
 

@@ -18,7 +18,7 @@
                                 <img src="{{ siteLogo() }}" alt="@lang('logo')">
                             </a>
                         </div>
-                        <p>{{ __(@$footerContent->data_values->description) }}</p>
+                        <p>{{ trans_case(@$footerContent->data_values->description) }}</p>
                         <ul class="social-links mt-4">
                             @foreach ($socialElement as $social)
                                 <li>
@@ -38,7 +38,7 @@
                             @foreach ($pages as $page)
                                 <li>
                                     <a href="{{ route('pages', [$page->slug]) }}">
-                                        {{ __($page->name) }}
+                                        {{ trans_case($page->name) }}
                                     </a>
                                 </li>
                             @endforeach

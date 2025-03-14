@@ -9,18 +9,18 @@
                         <h4 class="alert-heading">@lang('KYC Documents Rejected')</h4>
                         <button class="btn btn--dark btn--sm" data-bs-toggle="modal" data-bs-target="#kycRejectionReason">@lang('Show Reason')</button>
                     </div>
-                    <p class="mb-0">{{ __(@$kyc->data_values->reject) }} <a href="{{ route('user.kyc.form') }}" class="text--base">@lang('Click Here to Re-submit Documents')</a>.</p>
+                    <p class="mb-0">{{ trans_case(@$kyc->data_values->reject) }} <a href="{{ route('user.kyc.form') }}" class="text--base">@lang('Click Here to Re-submit Documents')</a>.</p>
                     <a href="{{ route('user.kyc.data') }}" class="text--base">@lang('See KYC Data.')</a>
                 </div>
             @elseif(auth()->user()->kv == Status::KYC_UNVERIFIED)
                 <div class="alert alert-info" role="alert">
                     <h4 class="alert-heading">@lang('KYC Verification required')</h4>
-                    <p class="mb-0">{{ __(@$kyc->data_values->required) }} <a href="{{ route('user.kyc.form') }}" class="text--base">@lang('Click Here to Submit Documents.')</a></p>
+                    <p class="mb-0">{{ trans_case(@$kyc->data_values->required) }} <a href="{{ route('user.kyc.form') }}" class="text--base">@lang('Click Here to Submit Documents.')</a></p>
                 </div>
             @elseif(auth()->user()->kv == Status::KYC_PENDING)
                 <div class="alert alert-warning" role="alert">
                     <h4 class="alert-heading">@lang('KYC Verification pending')</h4>
-                    <p class="mb-0">{{ __(@$kyc->data_values->pending) }} <a href="{{ route('user.kyc.data') }}" class="text--base">@lang('See KYC Data.')</a></p>
+                    <p class="mb-0">{{ trans_case(@$kyc->data_values->pending) }} <a href="{{ route('user.kyc.data') }}" class="text--base">@lang('See KYC Data.')</a></p>
                 </div>
             @endif
         @endif
@@ -73,7 +73,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="justify-content-center text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                            <td class="justify-content-center text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                         </tr>
                     @endforelse
                 </tbody>

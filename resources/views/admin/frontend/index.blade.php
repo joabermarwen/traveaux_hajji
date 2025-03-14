@@ -19,7 +19,7 @@
                             @if ($secs['builder'] && !@$secs['hide_builder'])
                                 <div class="col-md-3 searchItem">
                                     <div class="frontend-section-card">
-                                        <h6>{{ __($secs['name']) }}</h6>
+                                        <h6>{{ trans_case($secs['name']) }}</h6>
                                         <a href="{{ route('admin.frontend.sections', $k) }}" class="btn btn--light btn-sm"><i class="las la-cog me-0"></i></a>
                                     </div>
                                 </div>

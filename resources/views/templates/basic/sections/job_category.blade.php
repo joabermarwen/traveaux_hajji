@@ -17,8 +17,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
                 <div class="section__header text-center">
-                    <h2 class="section__header-title">{{ __($jobContent?->data_values->heading) }}</h2>
-                    <p>{{ __($jobContent?->data_values->subheading) }}</p>
+                    <h2 class="section__header-title">{{ trans_case($jobContent?->data_values->heading) }}</h2>
+                    <p>{{ trans_case($jobContent?->data_values->subheading) }}</p>
                 </div>
             </div>
         </div>
@@ -30,8 +30,8 @@
                             <img src="{{ getImage(getFilePath('category') . '/' . $category->image, getFileSize('category')) }}">
                         </div>
                         <div class="category__item-content">
-                            <h5 class="title">{{ __($category->name) }}</h5>
-                            <p class="mt-2">{{ __($category->description) }}</p>
+                            <h5 class="title">{{ trans_case($category->name) }}</h5>
+                            <p class="mt-2">{{ trans_case($category->description) }}</p>
                         </div>
                         <span class="job-count bg--base p-2 rounded-3 text--white">
                             {{ @$category->approveJob }}

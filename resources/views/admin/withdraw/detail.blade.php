@@ -7,7 +7,7 @@
         <div class="col-lg-4 col-md-4 mb-30">
             <div class="card overflow-hidden box--shadow1">
                 <div class="card-body">
-                    <h5 class="mb-20 text-muted">@lang('Withdraw Via') {{__(@$withdrawal->method->name)}}</h5>
+                    <h5 class="mb-20 text-muted">@lang('Withdraw Via') {{trans_case(@$withdrawal->method->name)}}</h5>
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Date')
@@ -26,7 +26,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Method')
-                            <span class="fw-bold">{{__($withdrawal->method->name)}}</span>
+                            <span class="fw-bold">{{trans_case($withdrawal->method->name)}}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Amount')
@@ -44,7 +44,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Rate')
-                            <span class="fw-bold">1 {{__(gs('cur_text'))}}
+                            <span class="fw-bold">1 {{trans_case(gs('cur_text'))}}
                                 = {{ showAmount($withdrawal->rate ) }}</span>
                         </li>
 
@@ -79,7 +79,7 @@
                         @foreach(json_decode($details) as $val)
                             <div class="row mt-4">
                                 <div class="col-md-12">
-                                    <h6>{{__($val->name)}}</h6>
+                                    <h6>{{trans_case($val->name)}}</h6>
                                     @if($val->type == 'checkbox')
                                         {{ implode(',',$val->value) }}
                                     @elseif($val->type == 'file')
@@ -89,7 +89,7 @@
                                             @lang('No File')
                                         @endif
                                     @else
-                                    <p>{{__($val->value)}}</p>
+                                    <p>{{trans_case($val->value)}}</p>
                                     @endif
                                 </div>
                             </div>

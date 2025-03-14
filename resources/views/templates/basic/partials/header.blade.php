@@ -17,7 +17,7 @@
                 @foreach ($pages as $page)
                     <li>
                         <a href="{{ route('pages', [$page->slug]) }}"
-                            class="{{ request()->routeIs('pages') ? 'active' : '' }}">{{ __($page->name) }}</a>
+                            class="{{ request()->routeIs('pages') ? 'active' : '' }}">{{ trans_case($page->name) }}</a>
                     </li>
                 @endforeach
                 <li><a href="{{ route('job.list') }}"

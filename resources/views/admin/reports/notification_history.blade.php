@@ -35,16 +35,16 @@
                                             {{ diffForHumans($log->created_at) }}
                                         </td>
                                         <td>
-                                            <span class="fw-bold">{{ keyToTitle($log->notification_type) }}</span> <br> @lang('via') {{ __($log->sender) }}
+                                            <span class="fw-bold">{{ keyToTitle($log->notification_type) }}</span> <br> @lang('via') {{ trans_case($log->sender) }}
                                         </td>
-                                        <td>@if($log->subject) {{ __($log->subject) }} @else @lang('N/A') @endif</td>
+                                        <td>@if($log->subject) {{ trans_case($log->subject) }} @else @lang('N/A') @endif</td>
                                         <td>
                                             <button class="btn btn-sm btn-outline--primary notifyDetail" data-type="{{ $log->notification_type }}" @if($log->notification_type == 'email') data-message="{{ route('admin.report.email.details',$log->id)}}" @else data-message="{{ $log->message }}" @if($log->image) data-image="{{asset(getFilePath('push').'/'.$log->image)}}" @endif @endif data-sent_to="{{ $log->sent_to }}"><i class="las la-desktop"></i> @lang('Detail')</button>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                        <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

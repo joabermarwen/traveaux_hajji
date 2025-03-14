@@ -11,18 +11,18 @@
                             <img src="{{ getImage(getFilePath('adminProfile').'/'. $admin->image, avatar:true)}}" alt="Image">
                         </div>
                         <div class="ps-3">
-                            <h4 class="text--white">{{__($admin->name)}}</h4>
+                            <h4 class="text--white">{{trans_case($admin->name)}}</h4>
                         </div>
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Name')
-                            <span class="fw-bold">{{__($admin->name)}}</span>
+                            <span class="fw-bold">{{trans_case($admin->name)}}</span>
                         </li>
 
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Username')
-                            <span  class="fw-bold">{{__($admin->username)}}</span>
+                            <span  class="fw-bold">{{trans_case($admin->username)}}</span>
                         </li>
 
                         <li class="list-group-item d-flex justify-content-between align-items-center">

@@ -21,7 +21,7 @@
                         <option value="">@lang('Any')</option>
                         @foreach ($remarks as $remark)
                             <option value="{{ $remark->remark }}" @selected(request()->remark == $remark->remark)>
-                                {{ __(keyToTitle($remark->remark)) }}</option>
+                                {{ trans_case(keyToTitle($remark->remark)) }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -69,13 +69,13 @@
                         </td>
                         <td>
                             <div class="text--end">
-                                {{ __($trx->details) }}
+                                {{ trans_case($trx->details) }}
                             </div>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}
+                        <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}
                         </td>
                     </tr>
                 @endforelse

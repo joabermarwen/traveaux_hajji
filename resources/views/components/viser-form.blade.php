@@ -2,7 +2,7 @@
     @foreach($formData as $data)
         <div class="col-md-{{ @$data->width ?? '12' }}">
             <div class="form-group">
-                <label class="form-label">{{ __($data->name) }} @if(@$data->instruction) <span data-bs-toggle="tooltip" data-bs-title="{{ __($data->instruction) }}"><i class="fas fa-info-circle"></i></span> @endif @if($data->is_required == 'required' && ($data->type == 'checkbox' || $data->type == 'radio')) <span class="text--danger">*</span> @endif </label>
+                <label class="form-label">{{ trans_case($data->name) }} @if(@$data->instruction) <span data-bs-toggle="tooltip" data-bs-title="{{ trans_case($data->instruction) }}"><i class="fas fa-info-circle"></i></span> @endif @if($data->is_required == 'required' && ($data->type == 'checkbox' || $data->type == 'radio')) <span class="text--danger">*</span> @endif </label>
                 @if($data->type == 'text')
                     <input type="text"
                     class="form-control form--control"
@@ -67,7 +67,7 @@
                     >
                         <option value="">@lang('Select One')</option>
                         @foreach ($data->options as $item)
-                            <option value="{{ $item }}" @selected($item == old($data->label))>{{ __($item) }}</option>
+                            <option value="{{ $item }}" @selected($item == old($data->label))>{{ trans_case($item) }}</option>
                         @endforeach
                     </select>
                 @elseif($data->type == 'checkbox')

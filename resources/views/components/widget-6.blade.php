@@ -20,11 +20,11 @@
             </span>
             <div class="widget-seven__description">
                 @if($title)
-                <p class="widget-seven__content-title">{{ __($title) }}</p>
+                <p class="widget-seven__content-title">{{ trans_case($title) }}</p>
                 @endif
-                <h3 class="widget-seven__content-amount">{{ $value || $value === "0" || $value === 0 ? $value : __($heading) }}</h3>
+                <h3 class="widget-seven__content-amount">{{ $value || $value === "0" || $value === 0 ? $value : trans_case($heading) }}</h3>
                 @if($subheading)
-                <p class="widget-seven__content-subheading">{{ __($subheading) }}</p>
+                <p class="widget-seven__content-subheading">{{ trans_case($subheading) }}</p>
                 @endif
             </div>
         </div>

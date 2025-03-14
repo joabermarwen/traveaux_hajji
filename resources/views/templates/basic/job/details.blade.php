@@ -7,7 +7,7 @@
                 <div class="col-lg-8">
                     <div class="job__details__wrapper">
                         <h3 class="job__details__wrapper-title">
-                            {{ __($job->title) }}
+                            {{ trans_case($job->title) }}
                         </h3>
                         <div class="job__details__widget">
                             <h4 class="job__details__widget-title">@lang('Job Description : ')</h4>
@@ -69,8 +69,8 @@
                                         <img src="{{ getImage(getFilePath('jobPoster') . '/' . @$job->attachment, getFileSize('jobPoster')) }}" alt="@lang('freelancer')" class="img-fluid">
                                     </div>
                                     <div class="content">
-                                        <h6 class="title">@lang('Job ID : '){{ __(@$job->job_code) }}</h6>
-                                        <p>@lang('Job posted by '){{ __(@$job->user->fullname) }}</p>
+                                        <h6 class="title">@lang('Job ID : '){{ trans_case(@$job->job_code) }}</h6>
+                                        <p>@lang('Job posted by '){{ trans_case(@$job->user->fullname) }}</p>
                                     </div>
                                 </div>
                                 <div class="info__item">
@@ -96,7 +96,7 @@
                                         <i class="las la-users"></i>
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">{{ __($job->quantity) }}</h4>
+                                        <h4 class="title">{{ trans_case($job->quantity) }}</h4>
                                         <p>@lang('This Job Vacancy')</p>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                                         <i class="las la-user"></i>
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">{{ __($job->vacancy_available) }}</h4>
+                                        <h4 class="title">{{ trans_case($job->vacancy_available) }}</h4>
                                         <p>@lang('Available Job Vacancy')</p>
                                     </div>
                                 </div>
@@ -120,16 +120,16 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://twitter.com/intent/tweet?text={{ __($job->title) }}&amp;url={{ urlencode(url()->current()) }}">
+                                    <a href="https://twitter.com/intent/tweet?text={{ trans_case($job->title) }}&amp;url={{ urlencode(url()->current()) }}">
                                         <i class="lab la-twitter"></i>
                                     </a>
                                 </li>
-                                <li><a href="http://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}&description={{ __($job->title) }}&media={{ getImage('assets/admin/images/job/' . $job->attachment) }}">
+                                <li><a href="http://pinterest.com/pin/create/button/?url={{ urlencode(url()->current()) }}&description={{ trans_case($job->title) }}&media={{ getImage('assets/admin/images/job/' . $job->attachment) }}">
                                         <i class="lab la-pinterest-p"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ urlencode(url()->current()) }}&amp;title={{ __($job->title) }}&amp;summary=dit is de linkedin summary">
+                                    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ urlencode(url()->current()) }}&amp;title={{ trans_case($job->title) }}&amp;summary=dit is de linkedin summary">
                                         <i class="lab la-linkedin-in"></i>
                                     </a>
                                 </li>

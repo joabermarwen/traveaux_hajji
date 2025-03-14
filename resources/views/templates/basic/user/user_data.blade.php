@@ -30,7 +30,7 @@
                                             @foreach ($countries as $key => $country)
                                                 <option data-mobile_code="{{ $country->dial_code }}"
                                                     value="{{ $country->country }}" data-code="{{ $key }}">
-                                                    {{ __($country->country) }}
+                                                    {{ trans_case($country->country) }}
                                                 </option>
                                             @endforeach
                                         </select>

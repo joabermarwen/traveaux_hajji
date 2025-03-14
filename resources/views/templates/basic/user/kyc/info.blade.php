@@ -7,14 +7,14 @@
                 @foreach($user->kyc_data as $val)
                     @continue(!$val->value)
                     <li class="list-group-item d-flex justify-content-between px-0">
-                        {{ __($val->name) }}
+                        {{ trans_case($val->name) }}
                         <span>
                             @if($val->type == 'checkbox')
                                 {{ implode(',',$val->value) }}
                             @elseif($val->type == 'file')
                                 <a href="{{ route('user.download.attachment',encrypt(getFilePath('verify').'/'.$val->value)) }}"><i class="fa fa-file"></i> @lang('Attachment') </a>
                             @else
-                                <p>{{ __($val->value) }}</p>
+                                <p>{{ trans_case($val->value) }}</p>
                             @endif
                         </span>
                     </li>

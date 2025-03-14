@@ -17,7 +17,7 @@
                         <div class="payment-method-item block-item">
                             <div class="row align-items-center gy-1">
                                 <div class="col-lg-8 col-sm-6">
-                                    <h3>{{ __($gateway->name) }}</h3>
+                                    <h3>{{ trans_case($gateway->name) }}</h3>
                                 </div>
                                 <div class="col-lg-4 col-sm-6">
                                     @if (count($supportedCurrencies) > 0)
@@ -25,7 +25,7 @@
                                             <select class="newCurrencyVal ">
                                                 <option value="">@lang('Select currency')</option>
                                                 @forelse($supportedCurrencies as $currency => $symbol)
-                                                    <option value="{{ $currency }}" data-symbol="{{ $symbol }}">{{ __($currency) }} </option>
+                                                    <option value="{{ $currency }}" data-symbol="{{ $symbol }}">{{ trans_case($currency) }} </option>
                                                 @empty
                                                     <option value="">@lang('No available currency support')</option>
                                                 @endforelse
@@ -49,7 +49,7 @@
                                             <div class="row">
                                                 @foreach ($gateway->extra as $key => $param)
                                                     <div class="form-group col-lg-6">
-                                                        <label>{{ __(@$param->title) }}</label>
+                                                        <label>{{ trans_case(@$param->title) }}</label>
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" value="{{ route($param->value) }}" readonly>
                                                             <button type="button" class="copyInput input-group-text" title="@lang('Copy')"><i class="fas fa-copy"></i></button>
@@ -64,11 +64,11 @@
                                         </div>
                                     @endif
                                     <div class="payment-method-body mt-2">
-                                        <h4 class="mb-3 payment-method-body-title">@lang('Global Setting for') {{ __($gateway->name) }}</h4>
+                                        <h4 class="mb-3 payment-method-body-title">@lang('Global Setting for') {{ trans_case($gateway->name) }}</h4>
                                         <div class="row">
                                             @foreach ($parameters->where('global', true) as $key => $param)
                                                 <div class="form-group col-xl-6 col-lg-12 col-md-6">
-                                                    <label>{{ __(@$param->title) }}</label>
+                                                    <label>{{ trans_case(@$param->title) }}</label>
                                                     <input type="text" class="form-control" name="global[{{ $key }}]" value="{{ @$param->value }}" required>
                                                 </div>
                                             @endforeach
@@ -86,7 +86,7 @@
                                     <div class="payment-method-header">
                                         <div class="content">
                                             <div class="d-flex justify-content-between">
-                                                <h4 class="mb-3">{{ __($gateway->name) }} - {{ __($gatewayCurrency->currency) }}</h4>
+                                                <h4 class="mb-3">{{ trans_case($gateway->name) }} - {{ trans_case($gatewayCurrency->currency) }}</h4>
                                                 <div class="remove-btn">
                                                     <button type="button" class="btn btn--danger confirmationBtn" data-question="@lang('Are you sure to delete this gateway currency?')" data-action="{{ route('admin.gateway.automatic.remove', $gatewayCurrency->id) }}">
                                                         <i class="la la-trash-o me-2"></i>@lang('Remove')
@@ -112,7 +112,7 @@
                                                             <label>@lang('Minimum Amount')</label>
                                                             <div class="input-group">
                                                                 <input type="number" step="any" class="form-control minAmount" name="currency[{{ $currencyIndex }}][min_amount]" value="{{ getAmount($gatewayCurrency->min_amount) }}" required>
-                                                                <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                                <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                             </div>
                                                             <span class="min-amount-error-message text--danger"></span>
                                                         </div>
@@ -120,7 +120,7 @@
                                                             <label>@lang('Maximum Amount')</label>
                                                             <div class="input-group">
                                                                 <input type="number" step="any" class="form-control maxAmount" name="currency[{{ $currencyIndex }}][max_amount]" value="{{ getAmount($gatewayCurrency->max_amount) }}" required>
-                                                                <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                                <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                             </div>
                                                             <span class="max-amount-error-message text--danger"></span>
                                                         </div>
@@ -135,7 +135,7 @@
                                                             <label>@lang('Fixed Charge')</label>
                                                             <div class="input-group">
                                                                 <input type="number" step="any" class="form-control" name="currency[{{ $currencyIndex }}][fixed_charge]" value="{{ getAmount($gatewayCurrency->fixed_charge) }}" required>
-                                                                <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                                <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -173,7 +173,7 @@
                                                             <div class="input-group">
                                                                 <div class="input-group-text">1 {{ gs('cur_text') }} =</div>
                                                                 <input type="number" step="any" class="form-control" name="currency[{{ $currencyIndex }}][rate]" value="{{ getAmount($gatewayCurrency->rate) }}" required>
-                                                                <div class="input-group-text"><span class="currency_symbol">{{ __($gatewayCurrency->baseSymbol()) }}</span></div>
+                                                                <div class="input-group-text"><span class="currency_symbol">{{ trans_case($gatewayCurrency->baseSymbol()) }}</span></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -193,7 +193,7 @@
                                                                 @foreach ($parameters->where('global', false) as $key => $param)
                                                                     <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label>{{ __($param->title) }}</label>
+                                                                            <label>{{ trans_case($param->title) }}</label>
                                                                             <input type="text" class="form-control" name="currency[{{ $currencyIndex }}][param][{{ $key }}]" value="{{ $globalParameters->$key }}" required>
                                                                         </div>
                                                                     </div>
@@ -242,7 +242,7 @@
                                                 <div class="form-group">
                                                     <label>@lang('Minimum Amount')</label>
                                                     <div class="input-group">
-                                                        <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                        <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                         <input disabled type="number" step="any" class="form-control minAmount" name="currency[{{ $currencyIndex }}][min_amount]" required>
                                                     </div>
                                                     <span class="min-amount-error-message text--danger"></span>
@@ -251,7 +251,7 @@
                                                 <div class="form-group">
                                                     <label>@lang('Maximum Amount')</label>
                                                     <div class="input-group">
-                                                        <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                        <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                         <input disabled type="number" step="any" class="form-control maxAmount" name="currency[{{ $currencyIndex }}][max_amount]" required>
                                                     </div>
                                                     <span class="max-amount-error-message text--danger"></span>
@@ -267,7 +267,7 @@
                                                 <div class="form-group">
                                                     <label>@lang('Fixed Charge')</label>
                                                     <div class="input-group">
-                                                        <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                        <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                         <input disabled type="number" step="any" class="form-control" name="currency[{{ $currencyIndex }}][fixed_charge]" required>
                                                     </div>
                                                 </div>
@@ -306,7 +306,7 @@
                                                     <label>@lang('Rate')</label>
                                                     <div class="input-group">
                                                         <span class="input-group-text">
-                                                            1 {{ __(gs('cur_text')) }} =
+                                                            1 {{ trans_case(gs('cur_text')) }} =
                                                         </span>
                                                         <input disabled type="number" step="any" class="form-control" name="currency[{{ $currencyIndex }}][rate]" required>
                                                         <div class="input-group-text"><span class="currency_symbol"></span></div>
@@ -325,7 +325,7 @@
                                                         @foreach ($parameters->where('global', false) as $key => $param)
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label>{{ __($param->title) }}</label>
+                                                                    <label>{{ trans_case($param->title) }}</label>
                                                                     <input disabled type="text" class="form-control" name="currency[{{ $currencyIndex }}][param][{{ $key }}]" required>
                                                                 </div>
                                                             </div>

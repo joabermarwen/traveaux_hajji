@@ -8,12 +8,12 @@
             <img class="fit-image" src="{{ frontendImage('register_disable',@$registrationDisabled->data_values->image,'280x280') }}" alt="">
         </div>
 
-        <h5 class="register-disable-title">{{ __(@$registrationDisabled->data_values->heading) }}</h5>
+        <h5 class="register-disable-title">{{ trans_case(@$registrationDisabled->data_values->heading) }}</h5>
         <p class="register-disable-desc">
-            {{ __(@$registrationDisabled->data_values->subheading) }}
+            {{ trans_case(@$registrationDisabled->data_values->subheading) }}
         </p>
         <div class="text-center mt-4">
-            <a href="{{ @$registrationDisabled->data_values->button_url }}" class="btn btn--base register-disable-footer-link">{{ __(@$registrationDisabled->data_values->button_name) }}</a>
+            <a href="{{ @$registrationDisabled->data_values->button_url }}" class="btn btn--base register-disable-footer-link">{{ trans_case(@$registrationDisabled->data_values->button_name) }}</a>
         </div>
     </div>
 </div>

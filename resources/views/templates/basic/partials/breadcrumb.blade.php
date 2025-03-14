@@ -4,11 +4,11 @@
 <div class="banner-inner bg_img" style="background: url({{ asset($activeTemplateTrue . 'images/bg/banner.png') }});">
     <div class="container">
         <div class="banner__inner__content">
-            <h2 class="banner__inner__content-title">{{ __($pageTitle) }}</h2>
+            <h2 class="banner__inner__content-title">{{ trans_case($pageTitle) }}</h2>
             <ul class="breadcums d-flex justify-content-center">
                 <li><a href="{{ route('home') }}">@lang('Home')</a></li>
                 <li>/</li>
-                <li>{{ __($pageTitle) }}</li>
+                <li>{{ trans_case($pageTitle) }}</li>
             </ul>
         </div>
     </div>

@@ -22,7 +22,7 @@
                 <i class="la {{ $icon }} f-size--56 text--{{ $iconColor }}"></i>
             </div>
             <div class="col-8 text-end">
-                <span class="text--{{ $color }} text--small">{{ __($title) }}</span>
+                <span class="text--{{ $color }} text--small">{{ trans_case($title) }}</span>
                 <h2 class="text--{{ $color }}">{{ $value }}</h2>
             </div>
         </div>

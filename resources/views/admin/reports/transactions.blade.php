@@ -28,7 +28,7 @@
                             <select class="form-control select2" data-minimum-results-for-search="-1" name="remark">
                                 <option value="">@lang('All')</option>
                                 @foreach($remarks as $remark)
-                                <option value="{{ $remark->remark }}" @selected(request()->remark == $remark->remark)>{{ __(keyToTitle($remark->remark)) }}</option>
+                                <option value="{{ $remark->remark }}" @selected(request()->remark == $remark->remark)>{{ trans_case(keyToTitle($remark->remark)) }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -84,11 +84,11 @@
                                         {{ showAmount($trx->post_balance) }}
                                     </td>
 
-                                    <td>{{ __($trx->details) }}</td>
+                                    <td>{{ trans_case($trx->details) }}</td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                    <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                 </tr>
                             @endforelse
 

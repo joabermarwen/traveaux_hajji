@@ -20,7 +20,7 @@
                             @forelse($gateways as $gateway)
                                 <tr>
                                     <td>
-                                        {{__($gateway->name)}}
+                                        {{trans_case($gateway->name)}}
                                     </td>
 
                                     <td>
@@ -48,7 +48,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                    <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                 </tr>
                             @endforelse
 

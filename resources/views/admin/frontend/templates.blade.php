@@ -10,7 +10,7 @@
             <div class="col-xl-4 col-md-6">
                 <div class="card">
                     <div class="card-header bg--primary d-flex justify-content-between flex-wrap">
-                        <h4 class="card-title text-white"> {{ __(keyToTitle($temp['name'])) }} </h4>
+                        <h4 class="card-title text-white"> {{ trans_case(keyToTitle($temp['name'])) }} </h4>
                         @if(gs('active_template') == $temp['name'])
                         <button type="submit" name="name" value="{{$temp['name']}}" class="btn btn--info">
                             @lang('SELECTED')
@@ -37,7 +37,7 @@
             @foreach($extraTemplates as $temp)
                 <div class="col-lg-3">
                     <div class="card">
-                        <div class="card-header bg--primary"><h4 class="card-title text-white"> {{ __(keyToTitle($temp['name'])) }} </h4></div>
+                        <div class="card-header bg--primary"><h4 class="card-title text-white"> {{ trans_case(keyToTitle($temp['name'])) }} </h4></div>
                         <div class="card-body">
                             <img src="{{$temp['image']}}" alt="Template" class="w-100">
                         </div>

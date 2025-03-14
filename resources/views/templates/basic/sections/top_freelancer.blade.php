@@ -13,8 +13,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
                 <div class="section__header text-center">
-                    <h2 class="section__header-title">{{ __($freelancerContent?->data_values->heading) }}</h2>
-                    <p>{{ __(@$freelancerContent->data_values->subheading) }}</p>
+                    <h2 class="section__header-title">{{ trans_case($freelancerContent?->data_values->heading) }}</h2>
+                    <p>{{ trans_case(@$freelancerContent->data_values->subheading) }}</p>
                 </div>
             </div>
         </div>

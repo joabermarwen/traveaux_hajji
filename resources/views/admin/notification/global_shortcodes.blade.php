@@ -26,7 +26,7 @@
                     @foreach(gs('global_shortcodes') as $shortCode => $codeDetails)
                     <tr>
                         <td><span class="short-codes">@{{@php echo $shortCode @endphp}}</span></td>
-                        <td>{{ __($codeDetails) }}</td>
+                        <td>{{ trans_case($codeDetails) }}</td>
                     </tr>
                     @endforeach
                     {{-- blade-formatter-enable --}}

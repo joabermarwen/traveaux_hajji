@@ -24,7 +24,7 @@
                                         <div class="col-md-4">
                                             <input type="hidden" name="has_image[]" value="1">
                                             <div class="form-group">
-                                                <label>{{ __(keyToTitle($imgKey)) }}</label>
+                                                <label>{{ trans_case(keyToTitle($imgKey)) }}</label>
                                                 <x-image-uploader class="w-100" :imagePath="frontendImage($key,@$data->data_values->$imgKey,$section->element->images->$imgKey->size)" name="image_input[{{ @$imgKey }}]" id="image-upload-input{{ $loop->index }}" :size="$section->element->images->$imgKey->size" :required="false" />
 
                                             </div>
@@ -46,14 +46,14 @@
                                     @if ($content == 'textarea')
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>{{ __(keyToTitle($k)) }}</label>
+                                                <label>{{ trans_case(keyToTitle($k)) }}</label>
                                                 <textarea rows="10" class="form-control" name="{{ $k }}" required>{{ old($k,@$data->data_values->$k) }}</textarea>
                                             </div>
                                         </div>
                                     @elseif($content == 'textarea-nic')
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>{{ __(keyToTitle($k)) }}</label>
+                                                <label>{{ trans_case(keyToTitle($k)) }}</label>
                                                 <textarea rows="10" class="form-control nicEdit" name="{{ $k }}">{{ old($k,@$data->data_values->$k) }}</textarea>
                                             </div>
                                         </div>
@@ -63,10 +63,10 @@
                                         @endphp
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>{{ __(keyToTitle(@$selectName)) }}</label>
+                                                <label>{{ trans_case(keyToTitle(@$selectName)) }}</label>
                                                 <select class="form-control select2" data-minimum-results-for-search="-1" name="{{ @$selectName }}" required>
                                                     @foreach ($content->options as $selectItemKey => $selectOption)
-                                                        <option value="{{ $selectItemKey }}" @if (@$data->data_values->$selectName == $selectItemKey) selected @endif>{{ __($selectOption) }}</option>
+                                                        <option value="{{ $selectItemKey }}" @if (@$data->data_values->$selectName == $selectItemKey) selected @endif>{{ trans_case($selectOption) }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -75,7 +75,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="d-flex justify-content-between">
-                                                    <label>{{ __(keyToTitle($k)) }}</label>
+                                                    <label>{{ trans_case(keyToTitle($k)) }}</label>
                                                     <div class="slug-verification d-none"></div>
                                                 </div>
                                                 <input type="text" class="form-control" name="slug" value="{{ old($k,@$data->slug) }}" required>
@@ -85,7 +85,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="d-flex justify-content-between">
-                                                    <label>{{ __(keyToTitle($k)) }}</label>
+                                                    <label>{{ trans_case(keyToTitle($k)) }}</label>
                                                     @if(@$section->element->slug == $k)
                                                         <a href="javascript:void(0)" class="buildSlug"><i class="las la-link"></i> @lang('Make Slug')</a>
                                                     @endif

@@ -28,7 +28,7 @@
                                                 <option value="">@lang('Select one')</option>
                                                 @foreach ($categories as $category)
                                                     <option value="{{$category->id}}" @selected(@$subcategory->category_id == $category->id)>
-                                                        {{ __($category->name) }}
+                                                        {{ trans_case($category->name) }}
                                                     </option>
                                                 @endforeach
                                             </select>

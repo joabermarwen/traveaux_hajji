@@ -31,7 +31,7 @@
                         <td>
                             <div class="text--end">
                                 <span class="fw-bold"><span class="text--primary">
-                                        {{ __(@$withdraw->method->name) }}</span></span>
+                                        {{ trans_case(@$withdraw->method->name) }}</span></span>
                                 <br>
                                 <small>{{ $withdraw->trx }}</small>
                             </div>
@@ -56,11 +56,11 @@
                         </td>
                         <td class="text-center">
                             <div class="text--end">
-                                1 {{ __(gs("cur_text")) }} = {{ showAmount($withdraw->rate) }}
-                                {{ __($withdraw->currency) }}
+                                1 {{ trans_case(gs("cur_text")) }} = {{ showAmount($withdraw->rate) }}
+                                {{ trans_case($withdraw->currency) }}
                                 <br>
                                 <strong>{{ showAmount($withdraw->final_amount) }}
-                                    {{ __($withdraw->currency) }}</strong>
+                                    {{ trans_case($withdraw->currency) }}</strong>
                             </div>
                         </td>
                         <td class="text-center">
@@ -74,7 +74,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}
+                        <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}
                         </td>
                     </tr>
                 @endforelse

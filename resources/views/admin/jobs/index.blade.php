@@ -21,7 +21,7 @@
                             <tbody>
                                 @forelse($jobs as $job)
                                     <tr>
-                                        <td> <strong>{{ __($job->job_code) }}</strong> <br> {{ strLimit($job->title,50) }}</td>
+                                        <td> <strong>{{ trans_case($job->job_code) }}</strong> <br> {{ strLimit($job->title,50) }}</td>
                                         <td>
                                             <span class="fw-bold">{{ @$job->user->fullname }}</span>
                                             <br>
@@ -50,7 +50,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                        <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

@@ -32,7 +32,7 @@
                             @endphp
                             <tr>
                                 <td>
-                                    <span class="fw-bold"><a href="{{ appendQuery('method',@$withdraw->method->id) }}"> {{ __(@$withdraw->method->name) }}</a></span>
+                                    <span class="fw-bold"><a href="{{ appendQuery('method',@$withdraw->method->id) }}"> {{ trans_case(@$withdraw->method->name) }}</a></span>
                                     <br>
                                     <small>{{ $withdraw->trx }}</small>
                                 </td>
@@ -57,9 +57,9 @@
                                 </td>
 
                                 <td>
-                                    {{ showAmount(1) }}  =  {{ showAmount($withdraw->rate,currencyFormat:false) }} {{ __($withdraw->currency) }}
+                                    {{ showAmount(1) }}  =  {{ showAmount($withdraw->rate,currencyFormat:false) }} {{ trans_case($withdraw->currency) }}
                                     <br>
-                                    <strong>{{ showAmount($withdraw->final_amount,currencyFormat:false) }} {{ __($withdraw->currency) }}</strong>
+                                    <strong>{{ showAmount($withdraw->final_amount,currencyFormat:false) }} {{ trans_case($withdraw->currency) }}</strong>
                                 </td>
 
                                 <td>
@@ -73,7 +73,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                             </tr>
                             @endforelse
 

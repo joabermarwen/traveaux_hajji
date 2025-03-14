@@ -9,7 +9,7 @@
                         <hr>
                         <ul>
                             @foreach ($update->update_log as $log)
-                                <li>{{ __($log) }}</li>
+                                <li>{{ trans_case($log) }}</li>
                             @endforeach
                         </ul>
                     </div>

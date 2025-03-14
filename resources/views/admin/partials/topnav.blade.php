@@ -61,7 +61,7 @@
                                 class="dropdown-menu__item">
                                 <div class="navbar-notifi">
                                     <div class="navbar-notifi__right">
-                                        <h6 class="notifi__title">{{ __($notification->title) }}</h6>
+                                        <h6 class="notifi__title">{{ trans_case($notification->title) }}</h6>
                                         <span class="time"><i class="far fa-clock"></i>
                                             {{ diffForHumans($notification->created_at) }}</span>
                                     </div>

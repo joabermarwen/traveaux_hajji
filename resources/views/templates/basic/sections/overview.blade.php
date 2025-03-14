@@ -8,9 +8,9 @@
                 <div class="container">
                     <div class="overview__content ms-lg-auto padding-top padding-bottom">
                         <div class="section__header mb-0 color-white">
-                            <h2 class="section__header-title">{{ __(@$overviewContent->data_values->heading_left) }}</h2>
-                            <p>{{ __(@$overviewContent->data_values->subheading_left) }}</p>
-                            <a href="{{ @$overviewContent->data_values->left_button_link }}" class="btn">{{ __(@$overviewContent->data_values->left_button_text) }}</a>
+                            <h2 class="section__header-title">{{ trans_case(@$overviewContent->data_values->heading_left) }}</h2>
+                            <p>{{ trans_case(@$overviewContent->data_values->subheading_left) }}</p>
+                            <a href="{{ @$overviewContent->data_values->left_button_link }}" class="btn">{{ trans_case(@$overviewContent->data_values->left_button_text) }}</a>
                         </div>
                     </div>
                 </div>
@@ -21,9 +21,9 @@
                 <div class="container">
                     <div class="overview__content ps-lg-4 ps-xxl-5 padding-top padding-bottom">
                         <div class="section__header mb-0">
-                            <h2 class="section__header-title">{{ __(@$overviewContent->data_values->heading_right) }}</h2>
-                            <p>{{ __(@$overviewContent->data_values->subheading_right) }}</p>
-                            <a href="{{ @$overviewContent->data_values->left_button_link }}" class="btn">{{ __(@$overviewContent->data_values->right_button_text) }}</a>
+                            <h2 class="section__header-title">{{ trans_case(@$overviewContent->data_values->heading_right) }}</h2>
+                            <p>{{ trans_case(@$overviewContent->data_values->subheading_right) }}</p>
+                            <a href="{{ @$overviewContent->data_values->left_button_link }}" class="btn">{{ trans_case(@$overviewContent->data_values->right_button_text) }}</a>
                         </div>
                     </div>
                 </div>

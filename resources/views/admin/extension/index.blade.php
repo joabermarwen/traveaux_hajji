@@ -19,8 +19,8 @@
                                 <tr>
                                     <td>
                                         <div class="user">
-                                            <div class="thumb"><img src="{{ getImage(getFilePath('extensions') .'/'. $extension->image,getFileSize('extensions')) }}" alt="{{ __($extension->name) }}" class="plugin_bg"></div>
-                                            <span class="name">{{ __($extension->name) }}</span>
+                                            <div class="thumb"><img src="{{ getImage(getFilePath('extensions') .'/'. $extension->image,getFileSize('extensions')) }}" alt="{{ trans_case($extension->name) }}" class="plugin_bg"></div>
+                                            <span class="name">{{ trans_case($extension->name) }}</span>
                                         </div>
                                     </td>
                                     <td>
@@ -31,14 +31,14 @@
                                     <td>
                                         <div class="button--group">
                                             <button type="button" class="btn btn-sm btn-outline--primary ms-1 mb-2 editBtn"
-                                                    data-name="{{ __($extension->name) }}"
+                                                    data-name="{{ trans_case($extension->name) }}"
                                                     data-shortcode="{{ json_encode($extension->shortcode) }}"
                                                     data-action="{{ route('admin.extensions.update', $extension->id) }}">
                                                 <i class="la la-cogs"></i> @lang('Configure')
                                             </button>
                                             <button type="button" class="btn btn-sm btn-outline--dark ms-1 mb-2 helpBtn"
-                                                    data-description="{{ __($extension->description) }}"
-                                                    data-support="{{ __($extension->support) }}">
+                                                    data-description="{{ trans_case($extension->description) }}"
+                                                    data-support="{{ trans_case($extension->support) }}">
                                                 <i class="la la-question"></i> @lang('Help')
                                             </button>
                                             @if($extension->status == Status::DISABLE)

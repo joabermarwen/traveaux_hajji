@@ -28,7 +28,7 @@
                     <tr>
                         <td>
                             <div>
-                                <span class="fw-bold"> <span class="text--primary">{{ __($deposit->gateway?->name) }}</span>
+                                <span class="fw-bold"> <span class="text--primary">{{ trans_case($deposit->gateway?->name) }}</span>
                                 </span>
                                 <br>
                                 <small> {{ $deposit->trx }} </small>
@@ -54,11 +54,11 @@
                         <td class="text-center">
                             <div>
 
-                                1 {{ __(gs("cur_text")) }} = {{ showAmount($deposit->rate, currencyFormat:false) }}
-                                {{ __($deposit->method_currency) }}
+                                1 {{ trans_case(gs("cur_text")) }} = {{ showAmount($deposit->rate, currencyFormat:false) }}
+                                {{ trans_case($deposit->method_currency) }}
                                 <br>
                                 <strong>{{ showAmount($deposit->final_amount, currencyFormat:false) }}
-                                    {{ __($deposit->method_currency) }}</strong>
+                                    {{ trans_case($deposit->method_currency) }}</strong>
                             </div>
 
                         </td>
@@ -77,7 +77,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="100%" class="text-center">{{ __($emptyMessage) }}</td>
+                        <td colspan="100%" class="text-center">{{ trans_case($emptyMessage) }}</td>
                     </tr>
                 @endforelse
             </tbody>

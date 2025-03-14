@@ -9,8 +9,8 @@
                 <a href="{{ route('home') }}" class="logo">
                     <img src="{{ siteLogo() }}" alt="@lang('logo')">
                 </a>
-                <h2 class="account__header-title">{{ __($loginContent?->data_values->heading) }}</h2>
-                <p>{{ __($loginContent?->data_values->subheading) }}</p>
+                <h2 class="account__header-title">{{ trans_case($loginContent?->data_values->heading) }}</h2>
+                <p>{{ trans_case($loginContent?->data_values->subheading) }}</p>
             </div>
 
             @include($activeTemplate . 'partials.social_login')

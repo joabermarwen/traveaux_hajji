@@ -22,11 +22,11 @@
                                     <td>
                                         <div class="user">
                                             <div class="thumb"><img src="{{ getImage(getFilePath('withdrawMethod').'/'. $method->image)}}" alt="@lang('image')"></div>
-                                            <span class="name">{{__($method->name)}}</span>
+                                            <span class="name">{{trans_case($method->name)}}</span>
                                         </div>
                                     </td>
 
-                                    <td class="fw-bold">{{ __($method->currency) }}</td>
+                                    <td class="fw-bold">{{ trans_case($method->currency) }}</td>
                                     <td class="fw-bold">{{ showAmount($method->fixed_charge)}} {{ (0 < $method->percent_charge) ? ' + '. showAmount($method->percent_charge, currencyFormat:false) .' %' : '' }} </td>
                                     <td class="fw-bold">{{ showAmount($method->min_limit) }}
                                         @lang('to') {{ showAmount($method->max_limit) }}</td>
@@ -53,7 +53,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                    <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                 </tr>
                             @endforelse
 

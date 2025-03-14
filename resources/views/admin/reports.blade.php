@@ -22,7 +22,7 @@
                 </tr>
               @empty
                 <tr>
-                    <td colspan="100%" class="text-center">{{ __($emptyMessage) }}</td>
+                    <td colspan="100%" class="text-center">{{ trans_case($emptyMessage) }}</td>
                 </tr>
               @endforelse
             </tbody>

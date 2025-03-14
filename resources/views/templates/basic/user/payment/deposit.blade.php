@@ -15,7 +15,7 @@
                                             class="payment-item @if ($loop->index > 4) d-none @endif gateway-option">
                                             <div class="payment-item__info">
                                                 <span class="payment-item__check"></span>
-                                                <span class="payment-item__name">{{ __($data->name) }}</span>
+                                                <span class="payment-item__name">{{ trans_case($data->name) }}</span>
                                             </div>
                                             <div class="payment-item__thumb">
                                                 <img class="payment-item__thumb-img"
@@ -75,7 +75,7 @@
                                         </div>
                                         <div class="deposit-info__input">
                                             <p class="text"><span class="processing-fee">@lang('0.00')</span>
-                                                {{ __(gs('cur_text')) }}
+                                                {{ trans_case(gs('cur_text')) }}
                                             </p>
                                         </div>
                                     </div>
@@ -86,7 +86,7 @@
                                         </div>
                                         <div class="deposit-info__input">
                                             <p class="text"><span class="final-amount">@lang('0.00')</span>
-                                                {{ __(gs('cur_text')) }}</p>
+                                                {{ trans_case(gs('cur_text')) }}</p>
                                         </div>
                                     </div>
 

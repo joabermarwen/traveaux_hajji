@@ -8,7 +8,7 @@
                         <div class="announcement__details__thumb">
                             <img alt="blog" src="{{ getImage('assets/images/frontend/blog/' . @$blog->data_values->image, '800x600') }}">
                         </div>
-                        <h3 class="blog-title">{{ __($blog->data_values->title) }}</h3>
+                        <h3 class="blog-title">{{ trans_case($blog->data_values->title) }}</h3>
                         <ul class="announcement__meta d-flex flex-wrap mt-2 mb-3 align-items-center">
                             <li>
                                 <a href="#">
@@ -28,11 +28,11 @@
                                         <span class="lab la-facebook-f"></span>
                                     </a>
                                 </li>
-                                <li><a href="https://twitter.com/intent/tweet?text={{ __($blog->data_values->title) }}&amp;url={{ urlencode(url()->current()) }}">
+                                <li><a href="https://twitter.com/intent/tweet?text={{ trans_case($blog->data_values->title) }}&amp;url={{ urlencode(url()->current()) }}">
                                         <span class="lab la-twitter"></span>
                                     </a>
                                 </li>
-                                <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ urlencode(url()->current()) }}&amp;title={{ __($blog->data_values->title) }}&amp;summary=dit is de linkedin summary">
+                                <li><a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ urlencode(url()->current()) }}&amp;title={{ trans_case($blog->data_values->title) }}&amp;summary=dit is de linkedin summary">
                                         <span class="lab la-linkedin-in"></span>
                                     </a>
                                 </li>

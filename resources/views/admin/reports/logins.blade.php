@@ -41,14 +41,14 @@
                                         </span>
                                     </td>
 
-                                    <td>{{ __($log->city) }} <br> {{ __($log->country) }}</td>
+                                    <td>{{ trans_case($log->city) }} <br> {{ trans_case($log->country) }}</td>
                                     <td>
-                                        {{ __($log->browser) }} <br> {{ __($log->os) }}
+                                        {{ trans_case($log->browser) }} <br> {{ trans_case($log->os) }}
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                    <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                 </tr>
                             @endforelse
 

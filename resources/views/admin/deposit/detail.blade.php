@@ -4,7 +4,7 @@
         <div class="col-xl-4 col-md-6 mb-30">
             <div class="card overflow-hidden box--shadow1">
                 <div class="card-body">
-                    <h5 class="mb-20 text-muted">@lang('Deposit Via') @if($deposit->method_code < 5000) {{ __(@$deposit->gateway->name) }} @else @lang('Google Pay') @endif</h5>
+                    <h5 class="mb-20 text-muted">@lang('Deposit Via') @if($deposit->method_code < 5000) {{ trans_case(@$deposit->gateway->name) }} @else @lang('Google Pay') @endif</h5>
                     <ul class="list-group">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Date')
@@ -24,7 +24,7 @@
                             @lang('Method')
                             <span class="fw-bold">
                                 @if($deposit->method_code < 5000)
-                                    {{ __(@$deposit->gateway->name) }}
+                                    {{ trans_case(@$deposit->gateway->name) }}
                                 @else
                                     @lang('Google Pay')
                                 @endif
@@ -44,12 +44,12 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Rate')
-                            <span class="fw-bold">1 {{__(gs('cur_text'))}}
-                                = {{ showAmount($deposit->rate,currencyFormat:false) }} {{__($deposit->baseCurrency())}}</span>
+                            <span class="fw-bold">1 {{trans_case(gs('cur_text'))}}
+                                = {{ showAmount($deposit->rate,currencyFormat:false) }} {{trans_case($deposit->baseCurrency())}}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('After Rate Conversion')
-                            <span class="fw-bold">{{ showAmount($deposit->final_amount,currencyFormat:false) }} {{__($deposit->method_currency)}}</span>
+                            <span class="fw-bold">{{ showAmount($deposit->final_amount,currencyFormat:false) }} {{trans_case($deposit->method_currency)}}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             @lang('Status')
@@ -59,7 +59,7 @@
                             <li class="list-group-item">
                                 <strong>@lang('Admin Response')</strong>
                                 <br>
-                                <p>{{__($deposit->admin_feedback)}}</p>
+                                <p>{{trans_case($deposit->admin_feedback)}}</p>
                             </li>
                         @endif
                     </ul>
@@ -76,7 +76,7 @@
                             @if($deposit->method_code >= 1000)
                             <div class="row mt-4">
                                 <div class="col-md-12">
-                                    <h6>{{__($val->name)}}</h6>
+                                    <h6>{{trans_case($val->name)}}</h6>
                                     @if($val->type == 'checkbox')
                                         {{ implode(',',$val->value) }}
                                     @elseif($val->type == 'file')
@@ -86,7 +86,7 @@
                                             @lang('No File')
                                         @endif
                                     @else
-                                    <p>{{__($val->value)}}</p>
+                                    <p>{{trans_case($val->value)}}</p>
                                     @endif
                                 </div>
                             </div>

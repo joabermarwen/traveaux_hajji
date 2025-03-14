@@ -8,7 +8,7 @@
 ])
 <a href="{{ $link }}" class="widget-eight bg--{{ $bg }} @if($type == 2) style-two @endif">
     <div class="widget-eight__description">
-        <p class="widget-eight__content-title">{{ __($title) }}</p>
+        <p class="widget-eight__content-title">{{ trans_case($title) }}</p>
         <h3 class="widget-eight__content-amount">{{ $value }}</h3>
     </div>
     <span class="widget-eight__content-icon">

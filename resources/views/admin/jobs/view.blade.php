@@ -5,7 +5,7 @@
             <div class="card custom--card b-radius--10 overflow-hidden box--shadow1">
                 <div class="card-body">
                     <h5 class="mb-20 text-muted">@lang('Job posted by')
-                        {{ __(@$job->user->fullname) }}
+                        {{ trans_case(@$job->user->fullname) }}
                     </h5>
                     <div class="p-3 bg--white">
                         <div class="side_Image text-center">
@@ -25,7 +25,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between pt-2 pb-2 ">
                             @lang('Quantity')
-                            <span class="fw-bold">{{ __($job->quantity) }}</span>
+                            <span class="fw-bold">{{ trans_case($job->quantity) }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between pt-2 pb-2 ">
                             @lang('Amount')
@@ -54,7 +54,7 @@
                     <div class="row gy-3">
                         <div class="col-md-8">
                             <h6>@lang('Job Title')</h6>
-                            <p>{{ __($job->title) }}</p>
+                            <p>{{ trans_case($job->title) }}</p>
                         </div>
                         <div class="col-md-8">
                             <h6>@lang('Job Description')</h6>

@@ -14,7 +14,7 @@
                         <li>
                             <a href="{{ @$contact->data_values->attribute }}{{ $contact->data_values->content }}">
                                 @php echo $contact->data_values->icon @endphp
-                                {{ __($contact->data_values->content) }}
+                                {{ trans_case($contact->data_values->content) }}
                             </a>
                         </li>
                     @endforeach
@@ -38,7 +38,7 @@
                                     <img src="{{ getImage(getFilePath('language') . '/' . @$selectedLang->image, getFileSize('language')) }}"
                                         alt="flag">
                                 </div>
-                                <p class="language_text_select">{{ __(@$selectedLang->name) }}</p>
+                                <p class="language_text_select">{{ trans_case(@$selectedLang->name) }}</p>
                             </div>
                             <span class="collapse-icon"><i class="las la-angle-down"></i></span>
                         </button>
@@ -72,4 +72,4 @@
             })(jQuery);
         </script>
     @endpush
-    
+

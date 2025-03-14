@@ -21,7 +21,7 @@
                         <tr>
                             <td>
                                 <a href="{{ route('ticket.view', $support->ticket) }}" class="text--base fw-bold">
-                                    [@lang('Ticket')#{{ $support->ticket }}] {{ __($support->subject) }} </a>
+                                    [@lang('Ticket')#{{ $support->ticket }}] {{ trans_case($support->subject) }} </a>
                             </td>
                             <td>
                                 @php echo $support->statusBadge; @endphp
@@ -50,7 +50,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="100%" class="text-center">{{ __($emptyMessage) }}</td>
+                            <td colspan="100%" class="text-center">{{ trans_case($emptyMessage) }}</td>
                         </tr>
                     @endforelse
                 </tbody>

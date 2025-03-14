@@ -108,7 +108,7 @@
                                     <label>@lang('Being Sent To') </label>
                                     <select class="form-control select2" name="being_sent_to" required data-minimum-results-for-search="1">
                                         @foreach ($notifyToUser as $key => $toUser)
-                                            <option value="{{ $key }}" @selected(old('being_sent_to', @$sessionData['being_sent_to']) == $key)>{{ __($toUser) }}</option>
+                                            <option value="{{ $key }}" @selected(old('being_sent_to', @$sessionData['being_sent_to']) == $key)>{{ trans_case($toUser) }}</option>
                                         @endforeach
                                     </select>
                                     <small class="text--info d-none userCountText"> <i class="las la-info-circle"></i> <strong

@@ -178,7 +178,7 @@
                                     <label>@lang('Country') <span class="text--danger">*</span></label>
                                     <select name="country" class="form-control select2">
                                         @foreach($countries as $key => $country)
-                                            <option data-mobile_code="{{ $country->dial_code }}" value="{{ $key }}" @selected($user->country_code == $key)>{{ __($country->country) }}</option>
+                                            <option data-mobile_code="{{ $country->dial_code }}" value="{{ $key }}" @selected($user->country_code == $key)>{{ trans_case($country->country) }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -245,7 +245,7 @@
                             <label>@lang('Amount')</label>
                             <div class="input-group">
                                 <input type="number" step="any" name="amount" class="form-control" placeholder="@lang('Please provide positive amount')" required>
-                                <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                             </div>
                         </div>
                         <div class="form-group">

@@ -3,7 +3,7 @@
     <div class="row gy-5">
         <div class="col-lg-7 col-xl-8 col-md-12">
             <div class="announcement__details">
-                <h3 class="blog-title">{{ __($prove->job->title) }}</h3>
+                <h3 class="blog-title">{{ trans_case($prove->job->title) }}</h3>
                 <ul class="announcement__meta d-flex flex-wrap mt-2 mb-3 align-items-center">
                     <li><i class="far fa-calendar"></i>
                         {{ showDateTime($prove->job->created_at, 'j F,Y g:i a') }}

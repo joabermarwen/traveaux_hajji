@@ -23,14 +23,14 @@
                                                 <div class="thumb">
                                                     <img src="{{ getImage(getFilePath('category') . '/' . $category->image, getFileSize('category')) }}" class="plugin_bg">
                                                 </div>
-                                                <span class="name">{{ __($category->name) }}</span>
+                                                <span class="name">{{ trans_case($category->name) }}</span>
                                             </div>
                                         </td>
                                         <td>
-                                            {{ __(strLimit($category->description, 30)) }}
+                                            {{ trans_case(strLimit($category->description, 30)) }}
                                             @if (strlen($category->description)  > 30)
                                             <br>
-                                            <small class="text--primary catDescription" role="button" data-cat_details="{{ __($category->description) }}">@lang('Read More')</small>
+                                            <small class="text--primary catDescription" role="button" data-cat_details="{{ trans_case($category->description) }}">@lang('Read More')</small>
                                             @endif
                                         </td>
                                         <td>
@@ -75,7 +75,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                        <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                     </tr>
                                 @endforelse
 

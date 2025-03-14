@@ -10,8 +10,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
                 <div class="section__header text-center">
-                    <h2 class="section__header-title">{{ __($jobPostConent?->data_values->heading) }}</h2>
-                    <p>{{ __($jobPostConent?->data_values->subheading) }}</p>
+                    <h2 class="section__header-title">{{ trans_case($jobPostConent?->data_values->heading) }}</h2>
+                    <p>{{ trans_case($jobPostConent?->data_values->subheading) }}</p>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
                             </div>
                             <h5 class="title">
                                 <a href="{{ route('job.details', [$job->id, slug($job->title)]) }}">
-                                    {{ __($job->title) }}
+                                    {{ trans_case($job->title) }}
                                 </a>
                             </h5>
                             <ul class="job__info">

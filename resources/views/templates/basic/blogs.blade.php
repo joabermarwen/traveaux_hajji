@@ -11,7 +11,7 @@
                             </div>
                             <div class="post__item-content">
                                 <h5 class="title"><a href="{{ route('blog.details', $blog->slug) }}">
-                                        {{ __($blog->data_values->title) }}
+                                        {{ trans_case($blog->data_values->title) }}
                                     </a>
                                 </h5>
                                 <ul class="post-meta">

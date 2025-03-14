@@ -48,7 +48,7 @@
         <div class="col-6 col-lg-6 col-xl-8">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">{{ __($pData->name) }} @lang('Page')</h3>
+                    <h3 class="card-title">{{ trans_case($pData->name) }} @lang('Page')</h3>
                 </div>
 
                 <div class="card-body">
@@ -62,7 +62,7 @@
                                 @foreach (json_decode($pData->secs) as $sec)
                                     <li class="sortable-item highlight icon-move item">
                                         <i class="sortable-icon"></i>
-                                        <span class="d-inline-block me-auto"> {{ __(@$sections[$sec]['name']) }}</span>
+                                        <span class="d-inline-block me-auto"> {{ trans_case(@$sections[$sec]['name']) }}</span>
                                         <i class="ms-auto d-inline-block remove-icon remove-icon-color la la-trash"></i>
                                         <input name="secs[]" type="hidden" value="{{ $sec }}">
                                     </li>
@@ -93,7 +93,7 @@
                             @if (!@$secs['no_selection'])
                                 <li class="highlight icon-move clearfix" data-key="{{ $k }}">
                                     <i class="sortable-icon"></i>
-                                    <span class="d-inline-block me-auto"> {{ __($secs['name']) }}</span>
+                                    <span class="d-inline-block me-auto"> {{ trans_case($secs['name']) }}</span>
                                     <i class="ms-auto d-inline-block remove-icon remove-icon-color la la-trash"></i>
                                     @if ($secs['builder'])
                                         <div class="float-end d-inline-block manage-content">

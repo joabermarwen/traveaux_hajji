@@ -35,7 +35,7 @@
                                     <span class="fw-bold">
                                         <a href="{{ appendQuery('method',$deposit->method_code < 5000 ? @$deposit->gateway->alias : $deposit->method_code) }}">
                                             @if($deposit->method_code < 5000)
-                                                {{ __(@$deposit->gateway->name) }}
+                                                {{ trans_case(@$deposit->gateway->name) }}
                                             @else
                                                 @lang('Google Pay')
                                             @endif
@@ -63,9 +63,9 @@
                                     </strong>
                                 </td>
                                 <td>
-                                    {{ showAmount(1) }} =  {{ showAmount($deposit->rate,currencyFormat:false) }} {{__($deposit->method_currency)}}
+                                    {{ showAmount(1) }} =  {{ showAmount($deposit->rate,currencyFormat:false) }} {{trans_case($deposit->method_currency)}}
                                     <br>
-                                    <strong>{{ showAmount($deposit->final_amount,currencyFormat:false) }} {{__($deposit->method_currency)}}</strong>
+                                    <strong>{{ showAmount($deposit->final_amount,currencyFormat:false) }} {{trans_case($deposit->method_currency)}}</strong>
                                 </td>
                                 <td>
                                     @php echo $deposit->statusBadge @endphp
@@ -79,7 +79,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                             </tr>
                         @endforelse
                         </tbody>

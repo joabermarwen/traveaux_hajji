@@ -8,21 +8,21 @@
         <div class="container">
             <div class="banner__wrapper d-flex align-items-center">
                 <div class="banner__content">
-                    <span class="subtitle">{{ __(@$bannerContent->data_values->heading) }}</span>
-                    <h1 class="banner__content-title">{{ __(@$bannerContent->data_values->subheading) }}</h1>
-                    <p>{{ __(@$bannerContent->data_values->description) }}</p>
+                    <span class="subtitle">{{ trans_case(@$bannerContent->data_values->heading) }}</span>
+                    <h1 class="banner__content-title">{{ trans_case(@$bannerContent->data_values->subheading) }}</h1>
+                    <p>{{ trans_case(@$bannerContent->data_values->description) }}</p>
                     <form class="job__search" action="{{ route('job.search') }}">
                         <div class="form--group d-flex align-items-center">
                             <select class="form-select form--control border-0 select2" name="category">
                                 <option value="" selected disabled>@lang('Select Category')</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ __($category->name) }}</option>
+                                    <option value="{{ $category->id }}">{{ trans_case($category->name) }}</option>
                                 @endforeach
                             </select>
                             <input type="text" class="form-control form--control" name="search" autocomplete="off"
                                 placeholder="@lang('Search jobs...')">
                             <button class="btn btn--base btn--round px-md-5"
-                                type="submit">{{ __(@$bannerContent->data_values->button_text) }}</button>
+                                type="submit">{{ trans_case(@$bannerContent->data_values->button_text) }}</button>
                         </div>
                     </form>
                     <div class="popular__tags">
@@ -32,7 +32,7 @@
                                 <li>
                                     <a
                                         href="{{ route('category.jobs', [@$keyword->category->id, slug(@$keyword->category->name)]) }}">
-                                        {{ __(@$keyword->category->name) }}
+                                        {{ trans_case(@$keyword->category->name) }}
                                     </a>
                                 </li>
                             @endforeach

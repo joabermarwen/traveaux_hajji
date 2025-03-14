@@ -13,6 +13,6 @@
 
     <div class="widget-two__content">
         <h2 class="text-{{ $color }}">{{ $value }}</h2>
-        <p class="text-{{ $color }}">{{ __($title) }}</p>
+        <p class="text-{{ $color }}">{{ trans_case($title) }}</p>
     </div>
 </div>

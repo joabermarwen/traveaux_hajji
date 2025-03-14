@@ -36,7 +36,7 @@
                                             <div class="form-group">
                                                 <label>@lang('Rate')</label>
                                                 <div class="input-group">
-                                                    <div class="input-group-text">1 {{ __(gs('cur_text')) }}=</div>
+                                                    <div class="input-group-text">1 {{ trans_case(gs('cur_text')) }}=</div>
                                                     <input type="number" step="any" class="form-control" name="rate" value="{{ getAmount(@$method->singleCurrency->rate) }}" required/>
                                                     <span class="currency_symbol input-group-text"></span>
                                                 </div>
@@ -55,7 +55,7 @@
                                                     <label>@lang('Minimum Amount')</label>
                                                     <div class="input-group">
                                                         <input type="number" step="any" class="form-control" name="min_limit" value="{{ getAmount(@$method->singleCurrency->min_amount) }}" required>
-                                                        <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                        <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                     </div>
                                                     <span class="min-limit-error-message text--danger"></span>
                                                 </div>
@@ -63,7 +63,7 @@
                                                     <label>@lang('Maximum Amount')</label>
                                                     <div class="input-group">
                                                         <input type="number" step="any" class="form-control" name="max_limit" value="{{ getAmount(@$method->singleCurrency->max_amount) }}" required>
-                                                        <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                        <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                     </div>
                                                     <span class="max-limit-error-message text--danger"></span>
                                                 </div>
@@ -78,7 +78,7 @@
                                                     <label>@lang('Fixed Charge')</label>
                                                     <div class="input-group">
                                                         <input type="number" step="any" class="form-control" name="fixed_charge" value="{{ getAmount(@$method->singleCurrency->fixed_charge) }}" required/>
-                                                        <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                        <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -98,7 +98,7 @@
                                             <h5 class="card-header bg--primary">@lang('Deposit Instruction')</h5>
                                             <div class="card-body">
                                                 <div class="form-group">
-                                                    <textarea rows="8" class="form-control border-radius-5 nicEdit" name="instruction">{{ __(@$method->description)  }}</textarea>
+                                                    <textarea rows="8" class="form-control border-radius-5 nicEdit" name="instruction">{{ trans_case(@$method->description)  }}</textarea>
                                                 </div>
                                             </div>
                                         </div>

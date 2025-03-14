@@ -8,8 +8,8 @@
                 <div class="login-area">
                     <div class="login-wrapper">
                         <div class="login-wrapper__top">
-                            <h3 class="title text-white">@lang('Welcome to') <strong>{{ __(gs('site_name')) }}</strong></h3>
-                            <p class="text-white">{{ __($pageTitle) }} @lang('to') {{ __(gs('site_name')) }}
+                            <h3 class="title text-white">@lang('Welcome to') <strong>{{ trans_case(gs('site_name')) }}</strong></h3>
+                            <p class="text-white">{{ trans_case($pageTitle) }} @lang('to') {{ trans_case(gs('site_name')) }}
                                 @lang('Dashboard')</p>
                         </div>
                         <div class="login-wrapper__body">

@@ -14,7 +14,7 @@
                 @forelse ($jobs as  $job)
                     <tr>
                         <td>
-                            <span class="invoice-id">{{ __(@$job->job->job_code) }}</span>
+                            <span class="invoice-id">{{ trans_case(@$job->job->job_code) }}</span>
                         </td>
                         <td>
                             <span class="amount">
@@ -36,7 +36,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td class="justify-content-center text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                        <td class="justify-content-center text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                     </tr>
                 @endforelse
             </tbody>

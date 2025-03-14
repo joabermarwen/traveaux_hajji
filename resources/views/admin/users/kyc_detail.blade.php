@@ -9,7 +9,7 @@
                           @foreach($user->kyc_data as $val)
                           @continue(!$val->value)
                           <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{__($val->name)}}
+                            {{trans_case($val->name)}}
                             <span>
                                 @if($val->type == 'checkbox')
                                     {{ implode(',',$val->value) }}
@@ -20,7 +20,7 @@
                                         @lang('No File')
                                     @endif
                                 @else
-                                <p>{{__($val->value)}}</p>
+                                <p>{{trans_case($val->value)}}</p>
                                 @endif
                             </span>
                           </li>

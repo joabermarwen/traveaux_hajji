@@ -9,12 +9,12 @@
             <div class="row gy-5">
                 <div class="col-lg-6">
                     <div class="contact__info__wrapper">
-                        <h3 class="contact__info__wrapper-title">{{ __($contactContent?->data_values->title) }}</h3>
-                        <p>{{ __($contactContent?->data_values->details) }}</p>
+                        <h3 class="contact__info__wrapper-title">{{ trans_case($contactContent?->data_values->title) }}</h3>
+                        <p>{{ trans_case($contactContent?->data_values->details) }}</p>
                         @foreach ($contactElement as $contact)
-                            <h4 class="title">@php echo $contact->data_values->icon @endphp {{ __($contact->data_values->title) }}</h4>
+                            <h4 class="title">@php echo $contact->data_values->icon @endphp {{ trans_case($contact->data_values->title) }}</h4>
                             <ul class="contacts">
-                                <li>{{ __($contact->data_values->content) }}</li>
+                                <li>{{ trans_case($contact->data_values->content) }}</li>
                             </ul>
                         @endforeach
                     </div>

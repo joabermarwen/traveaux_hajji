@@ -29,7 +29,7 @@
                                 <label class="required"> @lang('Timezone')</label>
                                 <select class="select2 form-control" name="timezone" >
                                     @foreach($timezones as $key => $timezone)
-                                    <option value="{{ @$key}}" @selected(@$key == $currentTimezone)>{{ __($timezone) }}</option>
+                                    <option value="{{ @$key}}" @selected(@$key == $currentTimezone)>{{ trans_case($timezone) }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -25,8 +25,8 @@
     </div>
 
     <div class="widget-two__content">
-        <h3>{{ $value || $value === "0" || $value === 0 ? $value : __($heading) }}</h3>
-        <p>{{ __($title ? $title : $subheading) }}</p>
+        <h3>{{ $value || $value === "0" || $value === 0 ? $value : trans_case($heading) }}</h3>
+        <p>{{ trans_case($title ? $title : $subheading) }}</p>
     </div>
 
     @if ($link && !$cover_cursor)

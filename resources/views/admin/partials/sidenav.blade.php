@@ -12,13 +12,13 @@
             <ul class="sidebar__menu">
                 @foreach($sideBarLinks as $key => $data)
                     @if (@$data->header)
-                        <li class="sidebar__menu-header">{{ __($data->header) }}</li>
+                        <li class="sidebar__menu-header">{{ trans_case($data->header) }}</li>
                     @endif
                     @if(@$data->submenu)
                         <li class="sidebar-menu-item sidebar-dropdown">
                             <a href="javascript:void(0)" class="{{ menuActive(@$data->menu_active, 3) }}">
                                 <i class="menu-icon {{ @$data->icon }}"></i>
-                                <span class="menu-title">{{ __(@$data->title) }}</span>
+                                <span class="menu-title">{{ trans_case(@$data->title) }}</span>
                                 @foreach(@$data->counters ?? [] as $counter)
                                     @if($$counter > 0)
                                         <span class="menu-badge menu-badge-level-one bg--warning ms-auto">
@@ -42,7 +42,7 @@
                                         <li class="sidebar-menu-item {{ menuActive(@$menu->menu_active) }} ">
                                             <a href="{{ route(@$menu->route_name,$submenuParams) }}" class="nav-link">
                                                 <i class="menu-icon las la-dot-circle"></i>
-                                                <span class="menu-title">{{ __($menu->title) }}</span>
+                                                <span class="menu-title">{{ trans_case($menu->title) }}</span>
                                                 @php $counter = @$menu->counter; @endphp
                                                 @if(@$$counter)
                                                     <span class="menu-badge bg--info ms-auto">{{ @$$counter }}</span>
@@ -65,7 +65,7 @@
                         <li class="sidebar-menu-item {{ menuActive(@$data->menu_active) }}">
                             <a href="{{ route(@$data->route_name,$mainParams) }}" class="nav-link ">
                                 <i class="menu-icon {{ $data->icon }}"></i>
-                                <span class="menu-title">{{ __(@$data->title) }}</span>
+                                <span class="menu-title">{{ trans_case(@$data->title) }}</span>
                                 @php $counter = @$data->counter; @endphp
                                 @if (@$$counter)
                                     <span class="menu-badge bg--info ms-auto">{{ @$$counter }}</span>
@@ -77,7 +77,7 @@
             </ul>
         </div>
         <div class="version-info text-center text-uppercase">
-            <span class="text--primary">{{__(systemDetails()['name'])}}</span>
+            <span class="text--primary">{{trans_case(systemDetails()['name'])}}</span>
             <span class="text--success">@lang('V'){{systemDetails()['version']}} </span>
         </div>
     </div>

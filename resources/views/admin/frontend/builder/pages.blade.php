@@ -16,8 +16,8 @@
                             <tbody>
                             @forelse($pData as $k => $data)
                                 <tr>
-                                    <td>{{ __($data->name) }}</td>
-                                    <td>{{ __($data->slug) }}</td>
+                                    <td>{{ trans_case($data->name) }}</td>
+                                    <td>{{ trans_case($data->slug) }}</td>
                                     <td>
                                         <div class="button--group">
                                             <a href="{{ route('admin.frontend.manage.pages.seo',$data->id) }}" class="btn btn-sm btn-outline--info"><i class="la la-cog"></i> @lang('SEO Setting')</a>
@@ -34,7 +34,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                    <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                 </tr>
                             @endforelse
                             </tbody>

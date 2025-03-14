@@ -7,8 +7,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
                 <div class="section__header text-center">
-                    <h2 class="section__header-title">{{ __(@$blogContent->data_values->heading) }}</h2>
-                    <p>{{ __(@$blogContent->data_values->subheading) }}</p>
+                    <h2 class="section__header-title">{{ trans_case(@$blogContent->data_values->heading) }}</h2>
+                    <p>{{ trans_case(@$blogContent->data_values->subheading) }}</p>
                 </div>
             </div>
         </div>
@@ -17,12 +17,12 @@
                 <div class="col-lg-4 col-md-6 col-sm-10">
                     <div class="post__item">
                         <div class="post__item-thumb">
-                            <img src="{{ getImage('assets/images/frontend/blog/thumb_' . @$blog->data_values->image, '410x300') }}" alt="{{ __($blog->data_values->title) }}">
+                            <img src="{{ getImage('assets/images/frontend/blog/thumb_' . @$blog->data_values->image, '410x300') }}" alt="{{ trans_case($blog->data_values->title) }}">
                         </div>
                         <div class="post__item-content">
                             <h5 class="title">
                                 <a href="{{ route('blog.details', $blog->slug) }}">
-                                    {{ __($blog->data_values->title) }}
+                                    {{ trans_case($blog->data_values->title) }}
                                 </a>
                             </h5>
                             <ul class="post-meta">

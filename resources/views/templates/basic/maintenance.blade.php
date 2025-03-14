@@ -6,7 +6,7 @@
                 <div class="col-lg-12 text-center">
                     <div class="row justify-content-center">
                         <div class="col-xl-10">
-                            <h4 class="text--danger mb-2">{{ __(@$maintenance->data_values->heading) }}</h4>
+                            <h4 class="text--danger mb-2">{{ trans_case(@$maintenance->data_values->heading) }}</h4>
                         </div>
                         <div class="col-sm-6 col-8 col-lg-12">
                             <img class="img-fluid mx-auto mb-5"

@@ -72,7 +72,7 @@
                         @foreach ($files as $file)
                             <div class="form-group me-2 ">
                                 <input type="checkbox" name="file_name[]" id="inlineRadio{{ $file->id }}" value="{{ $file->name }}">
-                                <label class="form-check-label" for="inlineRadio{{ $file->id }}">{{ __($file->name) }}</label>
+                                <label class="form-check-label" for="inlineRadio{{ $file->id }}">{{ trans_case($file->name) }}</label>
                             </div>
                         @endforeach
                     </div>

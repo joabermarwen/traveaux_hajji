@@ -22,7 +22,7 @@
                                             <div class="col-md-4">
                                                 <input type="hidden" name="has_image" value="1">
                                                 <div class="form-group">
-                                                    <label>{{ __(keyToTitle(@$imgKey)) }}</label>
+                                                    <label>{{ trans_case(keyToTitle(@$imgKey)) }}</label>
                                                     <x-image-uploader class="w-100" name="image_input[{{ @$imgKey }}]" :imagePath="frontendImage($key,@$content->data_values->$imgKey,@$section->content->images->$imgKey->size)" id="image-upload-input{{ $loop->index }}" :size="$section->content->images->$imgKey->size" :required="false" />
                                                 </div>
                                             </div>
@@ -36,7 +36,7 @@
                                             @if ($item == 'icon')
                                                 <div class="col-md-12">
                                                     <div class="form-group ">
-                                                        <label>{{ __(keyToTitle($k)) }}</label>
+                                                        <label>{{ trans_case(keyToTitle($k)) }}</label>
                                                         <div class="input-group">
                                                             <input type="text" class="form-control iconPicker icon" autocomplete="off" name="{{ $k }}" value="{{ @$content->data_values->$k }}" required>
                                                             <span class="input-group-text  input-group-addon" data-icon="las la-home" role="iconpicker"></span>
@@ -46,14 +46,14 @@
                                             @elseif($item == 'textarea')
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label>{{ __(keyToTitle($k)) }}</label>
+                                                        <label>{{ trans_case(keyToTitle($k)) }}</label>
                                                         <textarea rows="10" class="form-control" name="{{ $k }}" required>{{ @$content->data_values->$k }}</textarea>
                                                     </div>
                                                 </div>
                                             @elseif($item == 'textarea-nic')
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label>{{ __(keyToTitle($k)) }}</label>
+                                                        <label>{{ trans_case(keyToTitle($k)) }}</label>
                                                         <textarea rows="10" class="form-control nicEdit" name="{{ $k }}">{{ @$content->data_values->$k }}</textarea>
                                                     </div>
                                                 </div>
@@ -63,7 +63,7 @@
                                                 @endphp
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label>{{ __(keyToTitle(@$selectName)) }}</label>
+                                                        <label>{{ trans_case(keyToTitle(@$selectName)) }}</label>
                                                         <select class="form-control select2" data-minimum-results-for-search="-1" name="{{ @$selectName }}">
                                                             @foreach ($item->options as $selectItemKey => $selectOption)
                                                                 <option value="{{ $selectItemKey }}" @if (@$content->data_values->$selectName == $selectItemKey) selected @endif>{{ $selectOption }}</option>
@@ -74,7 +74,7 @@
                                             @else
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label>{{ __(keyToTitle($k)) }}</label>
+                                                        <label>{{ trans_case(keyToTitle($k)) }}</label>
                                                         <input type="text" class="form-control" name="{{ $k }}" value="{{ @$content->data_values->$k }}" required>
                                                     </div>
                                                 </div>
@@ -119,7 +119,7 @@
                                         @foreach ($section->element as $k => $type)
                                             @if ($k != 'modal' && $k != 'seo')
                                                 @if ($type == 'text' || $type == 'icon')
-                                                    <th>{{ __(keyToTitle($k)) }}</th>
+                                                    <th>{{ trans_case(keyToTitle($k)) }}</th>
                                                 @elseif($k == 'select')
                                                     <th>{{ keyToTitle(@$section->element->$k->name) }}</th>
                                                 @endif
@@ -150,7 +150,7 @@
                                                         @if ($type == 'icon')
                                                             <td>@php echo @$data->data_values->$k; @endphp</td>
                                                         @else
-                                                            <td>{{ __(@$data->data_values->$k) }}</td>
+                                                            <td>{{ trans_case(@$data->data_values->$k) }}</td>
                                                         @endif
                                                     @elseif($k == 'select')
                                                         @php
@@ -186,7 +186,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                            <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
@@ -202,7 +202,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"> @lang('Add New') {{ __(keyToTitle($key)) }} @lang('Item')</h5>
+                        <h5 class="modal-title"> @lang('Add New') {{ trans_case(keyToTitle($key)) }} @lang('Item')</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i class="las la-times"></i>
                         </button>
@@ -215,7 +215,7 @@
                                 @if ($k != 'modal')
                                     @if ($type == 'icon')
                                         <div class="form-group">
-                                            <label>{{ __(keyToTitle($k)) }}</label>
+                                            <label>{{ trans_case(keyToTitle($k)) }}</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control iconPicker icon" autocomplete="off" name="{{ $k }}" required>
                                                 <span class="input-group-text  input-group-addon" data-icon="las la-home" role="iconpicker"></span>
@@ -234,24 +234,24 @@
                                         @foreach ($type as $imgKey => $image)
                                             <input type="hidden" name="has_image" value="1">
                                             <div class="form-group">
-                                                <label>{{ __(keyToTitle(@$imgKey)) }}</label>
+                                                <label>{{ trans_case(keyToTitle(@$imgKey)) }}</label>
 
                                                 <x-image-uploader class="w-100" name="image_input[{{ @$imgKey }}]" :imagePath="getImage('',@$section->content->images->$imgKey->size)" id="addImage{{ $loop->index }}" :size="$section->element->images->$imgKey->size" />
                                             </div>
                                         @endforeach
                                     @elseif($type == 'textarea')
                                         <div class="form-group">
-                                            <label>{{ __(keyToTitle($k)) }}</label>
+                                            <label>{{ trans_case(keyToTitle($k)) }}</label>
                                             <textarea rows="4" class="form-control" name="{{ $k }}" required></textarea>
                                         </div>
                                     @elseif($type == 'textarea-nic')
                                         <div class="form-group">
-                                            <label>{{ __(keyToTitle($k)) }}</label>
+                                            <label>{{ trans_case(keyToTitle($k)) }}</label>
                                             <textarea rows="4" class="form-control nicEdit" name="{{ $k }}"></textarea>
                                         </div>
                                     @else
                                         <div class="form-group">
-                                            <label>{{ __(keyToTitle($k)) }}</label>
+                                            <label>{{ trans_case(keyToTitle($k)) }}</label>
                                             <input type="text" class="form-control" name="{{ $k }}" required>
                                         </div>
                                     @endif
@@ -271,7 +271,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title"> @lang('Update') {{ __(keyToTitle($key)) }} @lang('Item')</h5>
+                        <h5 class="modal-title"> @lang('Update') {{ trans_case(keyToTitle($key)) }} @lang('Item')</h5>
                         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <i class="las la-times"></i>
                         </button>
@@ -304,7 +304,7 @@
                                         @foreach ($type as $imgKey => $image)
                                             <input type="hidden" name="has_image" value="1">
                                             <div class="form-group">
-                                                <label>{{ __(keyToTitle($k)) }}</label>
+                                                <label>{{ trans_case(keyToTitle($k)) }}</label>
 
                                                 <x-image-uploader class="w-100" :imagePath="getImage('', $section->element->images->$imgKey->size)" name="image_input[{{ @$imgKey }}]" id="updateImage{{ $loop->index }}" :size="$section->element->images->$imgKey->size" :required="false" />
 
@@ -361,7 +361,7 @@
                         <select name="template_name" class="form-control form-control-sm border--primary h-auto">
                             <option value="">@lang('Select One')</option>
                             @foreach ($templates as $template)
-                                <option value="{{ $template['name'] }}">{{ __(keyToTitle($template['name'])) }}</option>
+                                <option value="{{ $template['name'] }}">{{ trans_case(keyToTitle($template['name'])) }}</option>
                             @endforeach
                         </select>
                         <button type="submit" class="input-group-text btn btn-sm btn--primary">@lang('Import')</button>

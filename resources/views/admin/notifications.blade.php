@@ -6,7 +6,7 @@
                 <a class="notify__item @if ($notification->is_read == Status::NO) unread--notification @endif" href="{{ route('admin.notification.read', $notification->id) }}">
                     <div class="notify__content d-flex justify-content-between">
                         <div>
-                            <h6 class="title">{{ __($notification->title) }}</h6>
+                            <h6 class="title">{{ trans_case($notification->title) }}</h6>
                             <span class="date"><i class="las la-clock"></i> {{ diffForHumans($notification->created_at) }}</span>
                         </div>
                     </div>

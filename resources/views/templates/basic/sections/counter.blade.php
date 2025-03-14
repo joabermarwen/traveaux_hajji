@@ -13,7 +13,7 @@
                         <div class="counter__item-content">
                             <h2 class="title"><span class="odometer" data-odometer-final="{{@$counter->data_values->digit }}"></span>{{ @$counter->data_values->digit_postfix }}
                             </h2>
-                            <p class="info">{{ __(@$counter->data_values->title) }}</p>
+                            <p class="info">{{ trans_case(@$counter->data_values->title) }}</p>
                         </div>
                     </div>
                 </div>

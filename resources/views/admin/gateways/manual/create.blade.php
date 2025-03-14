@@ -36,7 +36,7 @@
                                             <div class="form-group">
                                                 <label>@lang('Rate')</label>
                                                 <div class="input-group">
-                                                    <div class="input-group-text">1 {{ __(gs('cur_text'))}} =</div>
+                                                    <div class="input-group-text">1 {{ trans_case(gs('cur_text'))}} =</div>
                                                     <input type="number" step="any" class="form-control" name="rate" required value="{{ old('rate') }}">
                                                     <div class="input-group-text"><span class="currency_symbol"></span></div>
                                                 </div>
@@ -58,7 +58,7 @@
                                                     <label>@lang('Minimum Amount')</label>
                                                     <div class="input-group">
                                                         <input type="number" step="any" class="form-control" name="min_limit" required value="{{ old('min_limit') }}">
-                                                        <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                        <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                     </div>
                                                     <span class="min-limit-error-message text--danger"></span>
                                                 </div>
@@ -66,7 +66,7 @@
                                                     <label>@lang('Maximum Amount')</label>
                                                     <div class="input-group">
                                                         <input type="number" step="any" class="form-control" name="max_limit" required value="{{ old('max_limit') }}">
-                                                        <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                        <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                     </div>
                                                     <span class="max-limit-error-message text--danger"></span>
                                                 </div>
@@ -81,7 +81,7 @@
                                                     <label>@lang('Fixed Charge')</label>
                                                     <div class="input-group">
                                                         <input type="number" step="any" class="form-control" name="fixed_charge" required value="{{ old('fixed_charge') }}">
-                                                        <div class="input-group-text">{{ __(gs('cur_text')) }}</div>
+                                                        <div class="input-group-text">{{ trans_case(gs('cur_text')) }}</div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

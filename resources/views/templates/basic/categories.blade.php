@@ -12,8 +12,8 @@
                                     alt="@lang('icon')">
                             </div>
                             <div class="category__item-content">
-                                <h5 class="title">{{ __($category->name) }}</h5>
-                                <p class="mt-2">{{ __($category->description) }}</p>
+                                <h5 class="title">{{ trans_case($category->name) }}</h5>
+                                <p class="mt-2">{{ trans_case($category->description) }}</p>
                             </div>
 
                             <span class="job-count bg--base p-2 rounded-3 text--white">
@@ -25,7 +25,7 @@
                     </div>
                 @empty
                     <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 text-center">
-                        <h2 class="section__header-title text--base">{{ __($emptyMessage) }}</h2>
+                        <h2 class="section__header-title text--base">{{ trans_case($emptyMessage) }}</h2>
                     </div>
                 @endforelse
             </div>

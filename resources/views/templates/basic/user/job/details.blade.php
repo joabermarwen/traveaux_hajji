@@ -5,13 +5,13 @@
         <div class="finished__jobs__wrapper">
             <div class="finished__jobs__header d-flex flex-wrap justify-content-between align-items-center mb-2">
                 <h4 class="pe-4 mb-2">
-                    @lang('Job ID : ') {{ __($job->job_code) }}
+                    @lang('Job ID : ') {{ trans_case($job->job_code) }}
                 </h4>
                 <h4 class="pe-4 mb-2">
                     @lang('Budget : ') {{ showAmount($job->total) }}
                 </h4>
                 <h4 class="pe-4 mb-2">
-                    @lang('Workers : ') {{ __($job->workers) }}
+                    @lang('Workers : ') {{ trans_case($job->workers) }}
                 </h4>
                 <a href="{{ route('user.job.history') }}" class="btn btn--sm btn--base mb-2">
                     @lang('Go Back')
@@ -24,7 +24,7 @@
                             <div class="job__header me-3">
                                 <h5 class="job__header-title">
                                     <a href="{{ route('job.details', [$job->id, slug($job->title)]) }}">
-                                        {{ __($job->title) }}
+                                        {{ trans_case($job->title) }}
                                     </a>
                                 </h5>
                                 <p class="job-post-date">
@@ -60,7 +60,7 @@
             @empty
                 <div class="finished__job__item">
                     <div class="row w-100 justify-content-between g-0 gy-3">
-                        <h3 class="text--base text-center">{{ __($emptyMessage) }}</h3>
+                        <h3 class="text--base text-center">{{ trans_case($emptyMessage) }}</h3>
                     </div>
                 </div>
             @endforelse

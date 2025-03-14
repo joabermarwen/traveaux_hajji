@@ -32,12 +32,12 @@
                             </div>
                             <div>
                                 <p class="title">@lang('Name')</p>
-                                <p class="value">{{ __(@$formData->name) }}</p>
+                                <p class="value">{{ trans_case(@$formData->name) }}</p>
                             </div>
                         </div>
                         <div class="form-field__item">
                             <p class="title">@lang('Type')</p>
-                            <p class="value">{{ __(ucfirst($formData->type)) }}</p>
+                            <p class="value">{{ trans_case(ucfirst($formData->type)) }}</p>
                         </div>
                         <div class="form-field__item">
                             <p class="title">@lang('Width')</p>

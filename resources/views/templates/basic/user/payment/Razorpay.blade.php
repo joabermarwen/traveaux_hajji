@@ -9,7 +9,7 @@
         <ul class="list-group list-group-flush text-center">
             <li class="list-group-item   d-flex justify-content-between">
                 @lang('You have to pay '):
-                <strong>{{ showAmount($deposit->final_amount) }} {{ __($deposit->method_currency) }}</strong>
+                <strong>{{ showAmount($deposit->final_amount) }} {{ trans_case($deposit->method_currency) }}</strong>
             </li>
             <li class="list-group-item d-flex justify-content-between">
                 @lang('You will get '):

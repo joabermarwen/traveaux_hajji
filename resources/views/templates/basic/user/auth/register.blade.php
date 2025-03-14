@@ -15,8 +15,8 @@
                     <a href="{{ route('home') }}" class="logo">
                         <img src="{{ siteLogo() }}" alt="@lang('logo')">
                     </a>
-                    <h2 class="account__header-title">{{ __($registerContent?->data_values->heading) }}</h2>
-                    <p>{{ __($registerContent?->data_values->subheading) }}</p>
+                    <h2 class="account__header-title">{{ trans_case($registerContent?->data_values->heading) }}</h2>
+                    <p>{{ trans_case($registerContent?->data_values->subheading) }}</p>
                 </div>
 
                 @include($activeTemplate . 'partials.social_login')
@@ -61,7 +61,7 @@
                             <input type="checkbox" id="agree" @checked(old('agree')) name="agree" required>
                             <label for="agree">@lang('I agree with')</label> <span>
                                 @foreach ($policyPages as $policy)
-                                    <a href="{{ route('policy.pages', $policy->slug) }}" target="_blank">{{ __($policy->data_values->title) }}</a>
+                                    <a href="{{ route('policy.pages', $policy->slug) }}" target="_blank">{{ trans_case($policy->data_values->title) }}</a>
                                     @if (!$loop->last)
                                         ,
                                     @endif

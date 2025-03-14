@@ -11,7 +11,7 @@
                             <div class="col-md-7">
                                 <ul>
                                     <li>
-                                        <h5>@lang('Language Keywords of') {{ __($lang->name) }}</h5>
+                                        <h5>@lang('Language Keywords of') {{ trans_case($lang->name) }}</h5>
                                     </li>
                                 </ul>
                             </div>
@@ -28,7 +28,7 @@
                                             @lang('Key')
                                         </th>
                                         <th>
-                                            {{ __($lang->name) }}
+                                            {{ trans_case($lang->name) }}
                                         </th>
 
                                         <th class="w-85">@lang('Action')</th>
@@ -56,7 +56,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="100%" class="text-center">{{ __($emptyMessage) }}</td>
+                                            <td colspan="100%" class="text-center">{{ trans_case($emptyMessage) }}</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
@@ -178,7 +178,7 @@
                             <option value="999">@lang('System')</option>
                             @foreach ($list_lang as $data)
                                 @if ($data->id != $lang->id)
-                                    <option value="{{ $data->id }}">{{ __($data->name) }}</option>
+                                    <option value="{{ $data->id }}">{{ trans_case($data->name) }}</option>
                                 @endif
                             @endforeach
                         </select>

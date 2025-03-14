@@ -11,8 +11,8 @@
                                 <img src="{{ getImage(getFilePath('subcategory') . '/' . $subcategory->image, getFileSize('subcategory')) }}" alt="@lang('icon')">
                             </div>
                             <div class="category__item-content">
-                                <h5 class="title">{{ __($subcategory->name) }}</h5>
-                                <p class="mt-2">{{ __($subcategory->description) }}</p>
+                                <h5 class="title">{{ trans_case($subcategory->name) }}</h5>
+                                <p class="mt-2">{{ trans_case($subcategory->description) }}</p>
                             </div>
                             <span class="job-count bg--base p-2 text--white rounded-3">{{ $subcategory->jobApprove }}</span>
 
@@ -21,7 +21,7 @@
                     </div>
                 @empty
                     <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 text-center">
-                        <h2 class="section__header-title text--base">{{ __($emptyMessage) }}</h2>
+                        <h2 class="section__header-title text--base">{{ trans_case($emptyMessage) }}</h2>
                     </div>
                 @endforelse
             </div>

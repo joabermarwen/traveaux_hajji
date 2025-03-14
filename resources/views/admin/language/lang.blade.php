@@ -29,11 +29,11 @@
                                             <div class="thumb">
                                                 <img src="{{ getImage(getFilePath('language') . '/' . @$item->image, getFileSize('language')) }}"
                                                     alt="{{ $item->name }}" class="plugin_bg">
-                                                <span class="name">{{ __($item->name) }}</span>
+                                                <span class="name">{{ trans_case($item->name) }}</span>
                                             </div>
                                         </div>
                                     </td>
-                                    <td><strong>{{ __($item->code) }}</strong></td>
+                                    <td><strong>{{ trans_case($item->code) }}</strong></td>
                                     <td>
                                         @if($item->is_default == App\Constants\Status::YES)
                                             <span class="badge badge--success">@lang('Default')</span>
@@ -59,7 +59,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                    <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                 </tr>
                             @endforelse
                             </tbody>

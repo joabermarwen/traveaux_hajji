@@ -16,7 +16,7 @@
                             <tbody>
                                 @forelse ($files as $file)
                                     <tr>
-                                        <td>{{ __($file->name) }}</td>
+                                        <td>{{ trans_case($file->name) }}</td>
                                         <td>
                                             @php echo $file->statusBadge;@endphp
                                         </td>
@@ -40,7 +40,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-muted text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                                        <td class="text-muted text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                                     </tr>
                                 @endforelse
                             </tbody>

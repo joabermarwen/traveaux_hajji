@@ -23,7 +23,11 @@ function systemDetails()
     $system['build_version'] = '5.0.9';
     return $system;
 }
-
+function trans_case($key, $replace = [], $locale = null)
+{
+    $key = ucwords(strtolower($key));
+    return trans($key, $replace, $locale);
+}
 function slug($string)
 {
     return Str::slug($string);

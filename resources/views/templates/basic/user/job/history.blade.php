@@ -28,13 +28,13 @@
                 @forelse ($jobs as $job)
                     <tr>
                         <td>
-                            <span>{{ __($job->job_code) }}</span>
+                            <span>{{ trans_case($job->job_code) }}</span>
                         </td>
                         <td>
-                            {{ __(strLimit($job->title, 20)) }}
+                            {{ trans_case(strLimit($job->title, 20)) }}
                             @if (strlen($job->title) > 20)
                                 <br>
-                                <small class="jobTitle text--base " data-title_details="{{ __($job->title) }}">@lang('Read More')</small>
+                                <small class="jobTitle text--base " data-title_details="{{ trans_case($job->title) }}">@lang('Read More')</small>
                             @endif
                         </td>
                         <td>
@@ -92,7 +92,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td class="justify-content-center text-center" colspan="100%">{{ __($emptyMessage) }}</td>
+                        <td class="justify-content-center text-center" colspan="100%">{{ trans_case($emptyMessage) }}</td>
                     </tr>
                 @endforelse
             </tbody>
