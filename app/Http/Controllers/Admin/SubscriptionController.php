@@ -71,9 +71,9 @@ class SubscriptionController extends Controller
                 $message = trans_case('New Subscription Successfully Added');
                 DB::commit();
 
+                $notify[] = ["success", $message];
+                return back()->withNotify($notify);
             }catch(Exception $e){}
-            $notify[] = ["success", $message];
-            return back()->withNotify($notify);
     }
     public function edit($id){
         $pageTitle = trans_case("Edit Subscription");
