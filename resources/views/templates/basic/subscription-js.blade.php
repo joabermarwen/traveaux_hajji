@@ -26,9 +26,7 @@
             $(document).on('click', '.choose_plan', function(e){
                 let subscription_id = $(this).data('id');
                 let subscription_price = $(this).data('price');
-                let balance = {{ Auth::check() ? Auth::user()->user_wallet->balance : 0 }};
-                $('#subscription_id').val(subscription_id);
-                $('#subscription_price').val(subscription_price);
+
 
 
             });
@@ -55,14 +53,9 @@
                     success: function(res){
                         if(res.status=='success'){
                             location.reload();
-                            let balance = res.balance;
-                            $('#loginModal').modal('hide');
-                            if(subscription_price > balance){
-                                $('.load_after_login').load(location.href + ' .load_after_login', function (){
-                                    // $('.display_balance').html('<span class="text-danger">{{__('Wallet Balance Shortage:')}}'+ site_default_currency_symbol + (subscription_price-balance) +'</span>');
 
-                                });
-                            }
+                            $('#loginModal').modal('hide');
+                            
                         }
                         if(res.status == 'failed'){
                             erContainer.html('<div class="alert alert-danger">'+res.msg+'</div>');
