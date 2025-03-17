@@ -41,7 +41,7 @@
                                                     data-support="{{ trans_case($extension->support) }}">
                                                 <i class="la la-question"></i> @lang('Help')
                                             </button>
-                                            @if($extension->status == Status::DISABLE)
+                                            @if($extension->status == App\Constants\Status::DISABLE)
                                                 <button type="button"
                                                         class="btn btn-sm btn-outline--success ms-1 mb-2 confirmationBtn"
                                                         data-action="{{ route('admin.extensions.status', $extension->id) }}"

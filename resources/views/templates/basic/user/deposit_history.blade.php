@@ -70,7 +70,7 @@
                         @endphp
 
                         <td>
-                            <a href="javascript:void(0)" class="btn btn--base btn--sm @if ($deposit->method_code >= 1000) detailBtn @else disabled @endif" @if ($deposit->method_code >= 1000) data-info="{{ $details }}" @endif @if ($deposit->status == Status::PAYMENT_REJECT) data-admin_feedback="{{ $deposit->admin_feedback }}" @endif>
+                            <a href="javascript:void(0)" class="btn btn--base btn--sm @if ($deposit->method_code >= 1000) detailBtn @else disabled @endif" @if ($deposit->method_code >= 1000) data-info="{{ $details }}" @endif @if ($deposit->status == App\Constants\Status::PAYMENT_REJECT) data-admin_feedback="{{ $deposit->admin_feedback }}" @endif>
                                 <i class="fa fa-desktop"></i>
                             </a>
                         </td>

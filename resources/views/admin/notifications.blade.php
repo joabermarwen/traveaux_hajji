@@ -3,7 +3,7 @@
     <div class="notify__area">
         @forelse($notifications as $notification)
             <div class="notify-item-wrapper">
-                <a class="notify__item @if ($notification->is_read == Status::NO) unread--notification @endif" href="{{ route('admin.notification.read', $notification->id) }}">
+                <a class="notify__item @if ($notification->is_read == App\Constants\Status::NO) unread--notification @endif" href="{{ route('admin.notification.read', $notification->id) }}">
                     <div class="notify__content d-flex justify-content-between">
                         <div>
                             <h6 class="title">{{ trans_case($notification->title) }}</h6>

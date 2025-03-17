@@ -35,11 +35,11 @@
                                         @php echo $item->statusBadge; @endphp
                                     </td>
                                     <td>
-                                        @if($item->priority == Status::PRIORITY_LOW)
+                                        @if($item->priority == App\Constants\Status::PRIORITY_LOW)
                                             <span class="badge badge--dark">@lang('Low')</span>
-                                        @elseif($item->priority == Status::PRIORITY_MEDIUM)
+                                        @elseif($item->priority == App\Constants\Status::PRIORITY_MEDIUM)
                                             <span class="badge  badge--warning">@lang('Medium')</span>
-                                        @elseif($item->priority == Status::PRIORITY_HIGH)
+                                        @elseif($item->priority == App\Constants\Status::PRIORITY_HIGH)
                                             <span class="badge badge--danger">@lang('High')</span>
                                         @endif
                                     </td>

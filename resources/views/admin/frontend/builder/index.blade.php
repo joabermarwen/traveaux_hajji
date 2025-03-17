@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('panel')
-    @if ($pData->is_default == Status::NO)
+    @if ($pData->is_default == App\Constants\Status::NO)
         <div class="row mb-4">
             <div class="col-md-12">
                 <div class="card">

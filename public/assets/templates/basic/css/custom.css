@@ -786,3 +786,120 @@ button .spinner-border {
 .select2-container:has(.select2-selection--single) {
 	width: 100% !important;
 }
+
+.single-pricing-list-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    padding: 10px 0px;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    .single-pricing-list-item {
+      font-size: 15px;
+    }
+  }
+  .cmn-btn.btn-small {
+    line-height: 24px;
+    padding: 6px 15px;
+  }
+
+  @media only screen and (max-width: 375px) {
+    .cmn-btn.btn-small {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  }
+  .subsription-tabs .tab-parents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-profile {
+    color: #475467;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 24px;
+    padding: 7px 20px;
+    white-space: nowrap;
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    border: none;
+    background-color: unset;
+  }
+  /* Toggle Password hide Show */
+.single-input {
+    position: relative;
+  }
+
+  .toggle-password {
+    position: absolute;
+    bottom: 7px;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  .hide-icon {
+    display: none;
+  }
+
+  .toggle-password.show-pass .hide-icon {
+    display: block;
+  }
+
+  .toggle-password.show-pass .show-icon {
+    display: none;
+  }
+  .single-input {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .single-input .form--control {
+    border: 1px solid rgba(221, 221, 221, 0.4);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-box-shadow: 0 0 10px transparent;
+    box-shadow: 0 0 10px transparent;
+    border-radius: 7px;
+    height: 48px;
+    padding-inline: 12px;
+  }
+  .single-input label,
+  .custom-form .single-input label,
+  .custom-form .form-group label {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #1d2635;
+    margin-bottom: 8px;
+  }
+  .label-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1d2635;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .modal-body {
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+  }
+  .form--control {
+    width: 100%;
+  }
+
+
+

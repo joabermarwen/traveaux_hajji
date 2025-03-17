@@ -46,6 +46,30 @@
         "route_name": "admin.subcategory.index",
         "menu_active": "admin.subcategory*"
     },
+    "subscriptions":{
+        "title": "Subscriptions",
+        "icon": "las la-file-invoice-dollar",
+        "menu_active": "admin.subscription*",
+        "submenu": [
+            {
+                "keyword": [
+                    "Subscriptions",
+                    "Subscription"
+                ],
+                "title": "All Subscriptions",
+                "route_name": "admin.subscription.index",
+                "menu_active": "admin.subscription.index"
+            },
+            {
+                "keyword": [
+                    "Subscription Types"
+                ],
+                "title": "Subscription Types",
+                "route_name": "admin.subscription.type.index",
+                "menu_active": "admin.subscription.type.index"
+            }
+        ]
+    },
     "file_type": {
         "keyword": [
             "File Type",

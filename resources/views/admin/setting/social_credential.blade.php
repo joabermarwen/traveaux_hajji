@@ -20,7 +20,7 @@
                                         <td class="fw-bold">{{ ucfirst($key) }}</td>
                                         <td>{{ $credential->client_id }}</td>
                                         <td>
-                                            @if (@$credential->status == Status::ENABLE)
+                                            @if (@$credential->status == App\Constants\Status::ENABLE)
                                                 <span class="badge badge--success">@lang('Enabled')</span>
                                             @else
                                                 <span class="badge badge--warning">@lang('Disabled')</span>
@@ -37,7 +37,7 @@
                                                 <button type="button" class="btn btn-sm btn-outline--dark helpBtn" data-target-key="{{ $key }}">
                                                     <i class="la la-question"></i> @lang('Help')
                                                 </button>
-                                                @if (@$credential->status == Status::ENABLE)
+                                                @if (@$credential->status == App\Constants\Status::ENABLE)
                                                     <button class="btn btn-outline--danger btn-sm confirmationBtn"  data-question="@lang('Are you sure that you want to disable this login credential?')" data-action="{{ route('admin.setting.socialite.credentials.status.update', $key) }}">
                                                         <i class="las la-eye-slash"></i>@lang('Disable')
                                                     </button>

@@ -22,6 +22,8 @@
                 @endforeach
                 <li><a href="{{ route('job.list') }}"
                         class="{{ request()->routeIs('job.list') ? 'active' : '' }}">@lang('Jobs')</a></li>
+                <li><a href="{{ route('subscription.index') }}"
+                     class="{{ request()->routeIs('subscription.index') ? 'active' : '' }}">@lang('Subscriptions')</a></li>
                 <li><a href="{{ route('blogs') }}"
                         class="{{ request()->routeIs('blogs') ? 'active' : '' }}">@lang('Blogs')</a></li>
                 <li><a href="{{ route('contact') }}"

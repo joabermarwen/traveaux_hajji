@@ -97,7 +97,7 @@
                     @endif
 
 
-                    @if($withdrawal->status == Status::PAYMENT_PENDING)
+                    @if($withdrawal->status == App\Constants\Status::PAYMENT_PENDING)
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <button class="btn btn-outline--success btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#approveModal">

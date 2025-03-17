@@ -13,6 +13,10 @@ if (isset($_GET['color']) and $_GET['color'] != '') {
 if (!$color or !checkhexcolor($color)) {
     $color = "#336699";
 }
+$danger_color='#f53a3a';
+$danger_color_rgb='245, 58, 58';
+$success_color='#65c18c';
+$success_color_rgb='101, 193, 140';
 
 ?>
 
@@ -81,3 +85,195 @@ border-color: <?php echo $color ?> !important;
 background-color: <?php echo $color ?> !important;
 
 }
+
+.subscription-btn {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: <?php echo $color; ?>;
+    border: 1px solid <?php echo $color; ?>;
+    background-color: #fff;
+    padding: 7px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s;
+}
+.subscription-btn:hover,
+.subscription-btn.active {
+    background-color: <?php echo $color; ?> !important;
+    color: #fff;
+    border-color: <?php echo $color; ?> !important;
+}
+
+/* Pricing CSS */
+.single-pricing {
+    padding: 20px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    background-color: #fff;
+}
+
+.single-pricing:hover {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    -webkit-box-shadow: 0 0 50px <?php echo $color; ?>;
+    box-shadow: 0 0 50px <?php echo $color; ?>;
+    border: transparent;
+}
+
+div[class*=col]:nth-child(2) .single-pricing {
+    -webkit-box-shadow: 0 0 50px <?php echo $color; ?>;
+    box-shadow: 0 0 50px <?php echo $color; ?>;
+    border: 0;
+}
+
+div[class*=col]:nth-child(2) .single-pricing .btn-wrapper .cmn-btn {
+    background-color: <?php echo $color; ?>;
+    color: #fff;
+}
+
+.single-pricing:hover .btn-wrapper .cmn-btn {
+    background-color: <?php echo $color; ?>;
+    color: #fff;
+}
+
+.single-pricing.featured {
+    -webkit-box-shadow: 0 0 50px <?php echo $color; ?>;
+    box-shadow: 0 0 50px <?php echo $color; ?>;
+    border: 0;
+}
+
+.single-pricing.featured .cmn-btn {
+    background-color: <?php echo $color; ?>;
+    color: #fff;
+}
+
+.single-pricing.featured .cmn-btn:hover {
+    background-color: <?php echo $color; ?>;
+}
+
+.single-pricing-border {
+    border: 1px solid <?php echo $color; ?>;
+}
+
+.single-pricing-title {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 700;
+    margin-bottom: 0;
+    color: <?php echo $color; ?>;
+}
+
+.single-pricing-para {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .single-pricing-title {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .single-pricing-title {
+        font-size: 18px;
+    }
+}
+
+.single-pricing-list-item-icon {
+    background-color: rgba(<?php echo $success_color_rgb; ?>, .2);
+    color: <?php echo $success_color; ?>;
+    border: 1px solid <?php echo $success_color; ?>;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    height: 20px;
+    width: 20px;
+    flex-shrink: 0;
+}
+
+.single-pricing-list-item-icon.cross-icon {
+    color: <?php echo $danger_color; ?>;
+    background-color: rgba(<?php echo $danger_color_rgb; ?>, .2);
+    border: 1px solid <?php echo $danger_color; ?>;
+}
+
+.pricing-tabs ul li.active,
+.pricing-tabs ul .tab-list.active {
+    color: <?php echo $color; ?>;
+}
+
+.pricing-tabs-switch .input-switch:checked+label {
+    background: rgba(<?php echo hex2rgb($color); ?>, 0.15);
+}
+
+.pricing-tabs-switch .input-switch:checked+label:after {
+    left: calc(100% - 5px);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+.cmn-btn.btn-bg-gray {
+  background-color: #fff;
+  color: <?php echo $color; ?>;
+  border: 2px solid <?php echo $color; ?>;
+}
+
+.cmn-btn.btn-bg-gray:hover {
+  background-color: <?php echo $color; ?>;
+  color: #fff;
+}
+.radius-10 {
+    border-radius: 10px;
+}
+.cmn-btn{
+    border-radius: 5px;
+}
+.subsription-btn:hover,
+.subsription-btn.active {
+  background-color: <?php echo $color; ?>;
+  color: #fff;
+  border-color: <?php echo $color; ?>;
+}
+.subsription-btn {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: <?php echo $color; ?>;
+  border: 1px solid <?php echo $color; ?>;
+  background-color: #fff;
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .3s;
+}
+.btn-profile.extra-width {
+  padding-inline: 50px;
+}
+.btn-profile.btn-bg-1 {
+  background-color: <?php echo $color; ?>;
+  color: #fff;
+}
+
+/* Convert HEX to RGB */
+<?php
+function hex2rgb($hex) {
+    $hex = str_replace("#", "", $hex);
+    if (strlen($hex) == 3) {
+        $r = hexdec(str_repeat(substr($hex, 0, 1), 2));
+        $g = hexdec(str_repeat(substr($hex, 1, 1), 2));
+        $b = hexdec(str_repeat(substr($hex, 2, 1), 2));
+    } else {
+        $r = hexdec(substr($hex, 0, 2));
+        $g = hexdec(substr($hex, 2, 2));
+        $b = hexdec(substr($hex, 4, 2));
+    }
+    return "$r, $g, $b";
+}
+?>

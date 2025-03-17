@@ -30,14 +30,14 @@
                         <h5 class="text-center">@lang('KYC data not found')</h5>
                     @endif
 
-                    @if($user->kv == Status::KYC_UNVERIFIED)
+                    @if($user->kv == App\Constants\Status::KYC_UNVERIFIED)
                     <div class="my-3">
                         <h6>@lang('Rejection Reason')</h6>
                         <p>{{ $user->kyc_rejection_reason }}</p>
                     </div>
                     @endif
 
-                    @if($user->kv == Status::KYC_PENDING)
+                    @if($user->kv == App\Constants\Status::KYC_PENDING)
                     <div class="d-flex flex-wrap justify-content-end mt-3">
                         <button class="btn btn-outline--danger me-3" data-bs-toggle="modal" data-bs-target="#kycRejectionModal"><i class="las la-ban"></i>@lang('Reject')</button>
                         <button class="btn btn-outline--success confirmationBtn" data-question="@lang('Are you sure to approve this documents?')" data-action="{{ route('admin.users.kyc.approve', $user->id) }}"><i class="las la-check"></i>@lang('Approve')</button>

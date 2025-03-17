@@ -2,8 +2,8 @@
 @section('panel')
     <div class="dashboard__content  ">
         <div class="text-end">
-            <a href="{{ route('ticket.open') }}" class="btn btn--sm btn--base mb-2"> <i class="fa fa-plus"></i>
-                @lang('New Ticket')</a>
+            {{-- <a href="{{ route('ticket.open') }}" class="btn btn--sm btn--base mb-2"> <i class="fa fa-plus"></i>
+                @lang('New Ticket')</a> --}}
         </div>
         <div class="table-responsive">
             <table class="table custom--table">
@@ -27,11 +27,11 @@
                                 @php echo $support->statusBadge; @endphp
                             </td>
                             <td>
-                                @if ($support->priority == Status::PRIORITY_LOW)
+                                @if ($support->priority == App\Constants\Status::PRIORITY_LOW)
                                     <span class="badge badge--dark">@lang('Low')</span>
-                                @elseif($support->priority == Status::PRIORITY_MEDIUM)
+                                @elseif($support->priority == App\Constants\Status::PRIORITY_MEDIUM)
                                     <span class="badge  badge--warning">@lang('Medium')</span>
-                                @elseif($support->priority == Status::PRIORITY_HIGH)
+                                @elseif($support->priority == App\Constants\Status::PRIORITY_HIGH)
                                     <span class="badge badge--danger">@lang('High')</span>
                                 @endif
                             </td>

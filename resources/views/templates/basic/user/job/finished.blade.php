@@ -22,9 +22,9 @@
                             </span>
                         </td>
                         <td>
-                            @if ($job->status == Status::JOB_PROVE_PENDING)
+                            @if ($job->status == App\Constants\Status::JOB_PROVE_PENDING)
                                 <span class="badge badge--warning">@lang('Pending')</span>
-                            @elseif($job->status == Status::JOB_PROVE_APPROVE)
+                            @elseif($job->status == App\Constants\Status::JOB_PROVE_APPROVE)
                                 <span class="badge badge--success">@lang('Approved')</span>
                             @else
                                 <span class="badge badge--danger">@lang('Rejected')</span>

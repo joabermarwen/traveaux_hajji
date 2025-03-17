@@ -39,7 +39,7 @@
                                         <div class="button--group">
                                             <a href="{{ route('admin.withdraw.method.edit', $method->id)}}"
                                                class="btn btn-sm btn-outline--primary ms-1"><i class="las la-pen"></i>@lang('Edit')</a>
-                                            @if($method->status == Status::ENABLE)
+                                            @if($method->status == App\Constants\Status::ENABLE)
                                                 <button class="btn btn-sm btn-outline--danger ms-1 confirmationBtn" data-question="@lang('Are you sure to disable this method?')" data-action="{{ route('admin.withdraw.method.status',$method->id) }}">
                                                     <i class="la la-eye-slash"></i>@lang('Disable')
                                                 </button>

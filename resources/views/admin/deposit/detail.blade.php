@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        @if($details || $deposit->status == Status::PAYMENT_PENDING)
+        @if($details || $deposit->status == App\Constants\Status::PAYMENT_PENDING)
         <div class="col-xl-8 col-md-6 mb-30">
             <div class="card overflow-hidden box--shadow1">
                 <div class="card-body">
@@ -96,7 +96,7 @@
                             @include('admin.deposit.gateway_data',['details'=>json_decode($details)])
                         @endif
                     @endif
-                    @if($deposit->status == Status::PAYMENT_PENDING)
+                    @if($deposit->status == App\Constants\Status::PAYMENT_PENDING)
                         <div class="row mt-4">
                             <div class="col-md-12">
                                 <button class="btn btn-outline--success btn-sm ms-1 confirmationBtn"

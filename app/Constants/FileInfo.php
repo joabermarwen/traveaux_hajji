@@ -59,6 +59,10 @@ class FileInfo
             "path"      => 'assets/images/job',
             "size"      => '600x400',
         ];
+        $data['subscription'] = [
+            "path"      => 'assets/images/subscription',
+            "size"      => '50x50',
+        ];
         $data['adminProfile'] = [
             'path'      =>'assets/admin/images/profile',
             'size'      =>'400x400',

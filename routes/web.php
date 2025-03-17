@@ -11,6 +11,10 @@ Route::controller(SiteController::class)->group(function () {
     Route::get('/contact', 'contact')->name('contact');
     Route::post('/contact', 'contactSubmit')->name('contact.submit');
 
+    //subscriptions
+    Route::get('/subscriptions/all', 'subscriptions')->name('subscription.index');
+    Route::get('/subscriptions/filter', 'filter_subscriptions')->name('subscription.filter');
+
     // Language Change Route
     Route::get('/change/{lang?}', 'changeLanguage')->name('lang');
 

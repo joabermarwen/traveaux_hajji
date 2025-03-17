@@ -22,7 +22,7 @@
                                         <div class="button--group">
                                             <a href="{{ route('admin.frontend.manage.pages.seo',$data->id) }}" class="btn btn-sm btn-outline--info"><i class="la la-cog"></i> @lang('SEO Setting')</a>
                                             <a href="{{ route('admin.frontend.manage.section', $data->id) }}" class="btn btn-sm btn-outline--primary"><i class="la la-pen"></i> @lang('Edit')</a>
-                                            @if($data->is_default == Status::NO)
+                                            @if($data->is_default == App\Constants\Status::NO)
                                                 <button class="btn btn-sm btn-outline--danger confirmationBtn"
                                                 data-action="{{ route('admin.frontend.manage.pages.delete',$data->id) }}"
                                                 data-question="@lang('Are you sure to remove this page?')">

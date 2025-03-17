@@ -14,7 +14,7 @@
                                 [@lang('Ticket#'){{ $ticket->ticket }}] {{ $ticket->subject }}
                             </div>
                             <div class="col-sm-4  col-md-6 text-sm-end mt-sm-0 mt-3">
-                                @if ($ticket->status != Status::TICKET_CLOSE)
+                                @if ($ticket->status != App\Constants\Status::TICKET_CLOSE)
                                     <button class="btn btn--danger btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#DelModal">
                                         <i class="la la-times"></i> @lang('Close Ticket')
                                     </button>

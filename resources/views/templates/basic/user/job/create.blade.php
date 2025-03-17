@@ -53,10 +53,10 @@
                     </label>
                     <select class="form-control form-select form--control h-50 w-100" name="job_proof" id="fileOption" required>
                         <option value="" selected disabled>@lang('Select Type')</option>
-                        <option value="1" @selected(old('job_proof') == Status::JOB_PROVE_OPTIONAL)>
+                        <option value="1" @selected(old('job_proof') == App\Constants\Status::JOB_PROVE_OPTIONAL)>
                             @lang('Optional')
                         </option>
-                        <option value="2" @selected(old('job_proof') == Status::JOB_PROVE_REQUIRED)>
+                        <option value="2" @selected(old('job_proof') == App\Constants\Status::JOB_PROVE_REQUIRED)>
                             @lang('Required')</option>
                     </select>
                 </div>

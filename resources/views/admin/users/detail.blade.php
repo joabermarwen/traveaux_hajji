@@ -91,7 +91,7 @@
                 @endif
 
                 <div class="flex-fill">
-                    @if($user->status == Status::USER_ACTIVE)
+                    @if($user->status == App\Constants\Status::USER_ACTIVE)
                     <button type="button" class="btn btn--warning btn--shadow w-100 btn-lg userStatus" data-bs-toggle="modal" data-bs-target="#userStatusModal">
                         <i class="las la-ban"></i>@lang('Ban User')
                     </button>
@@ -211,7 +211,7 @@
                             <div class="col-xl-3 col-12">
                                 <div class="form-group">
                                     <label>@lang('KYC') </label>
-                                    <input type="checkbox" data-width="100%" data-height="50" data-onstyle="-success" data-offstyle="-danger" data-bs-toggle="toggle" data-on="@lang('Verified')" data-off="@lang('Unverified')" name="kv" @if($user->kv == Status::KYC_VERIFIED) checked @endif>
+                                    <input type="checkbox" data-width="100%" data-height="50" data-onstyle="-success" data-offstyle="-danger" data-bs-toggle="toggle" data-on="@lang('Verified')" data-off="@lang('Unverified')" name="kv" @if($user->kv == App\Constants\Status::KYC_VERIFIED) checked @endif>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -267,7 +267,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        @if($user->status == Status::USER_ACTIVE) @lang('Ban User') @else @lang('Unban User') @endif
+                        @if($user->status == App\Constants\Status::USER_ACTIVE) @lang('Ban User') @else @lang('Unban User') @endif
                     </h5>
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <i class="las la-times"></i>
@@ -276,7 +276,7 @@
                 <form action="{{route('admin.users.status',$user->id)}}" method="POST">
                     @csrf
                     <div class="modal-body">
-                        @if($user->status == Status::USER_ACTIVE)
+                        @if($user->status == App\Constants\Status::USER_ACTIVE)
                         <h6 class="mb-2">@lang('If you ban this user he/she won\'t able to access his/her dashboard.')</h6>
                         <div class="form-group">
                             <label>@lang('Reason')</label>
@@ -289,7 +289,7 @@
                         @endif
                     </div>
                     <div class="modal-footer">
-                        @if($user->status == Status::USER_ACTIVE)
+                        @if($user->status == App\Constants\Status::USER_ACTIVE)
                         <button type="submit" class="btn btn--primary h-45 w-100">@lang('Submit')</button>
                         @else
                         <button type="button" class="btn btn--dark" data-bs-dismiss="modal">@lang('No')</button>

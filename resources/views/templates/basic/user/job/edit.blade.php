@@ -58,10 +58,10 @@
                                 <select class="form-contro form-select form--control h-50 w-100" name="job_proof" id="fileOption" required>
                                     <option value="" selected disabled>@lang('Select Job Proof')
                                     </option>
-                                    <option value="1" @selected($job->job_proof == Status::JOB_PROVE_OPTIONAL)>
+                                    <option value="1" @selected($job->job_proof == App\Constants\Status::JOB_PROVE_OPTIONAL)>
                                         @lang('Optional')
                                     </option>
-                                    <option value="2" @selected($job->job_proof == Status::JOB_PROVE_REQUIRED)>
+                                    <option value="2" @selected($job->job_proof == App\Constants\Status::JOB_PROVE_REQUIRED)>
                                         @lang('Required')
                                     </option>
                                 </select>

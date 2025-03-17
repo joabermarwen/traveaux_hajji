@@ -64,7 +64,7 @@
                             <h6>@lang('Job Attachment')</h6>
                             <img src="{{ getImage(getFilePath('jobPoster') . '/' . $job->attachment, getFileSize('jobPoster')) }}" class="w-50">
                         </div>
-                        @if ($job->status == Status::JOB_PENDING)
+                        @if ($job->status == App\Constants\Status::JOB_PENDING)
                             <div class="col-md-12">
                                 <button class="btn btn-outline--success ms-1 confirmationBtn" data-question="@lang('Are you sure to approve this job?')" data-action="{{ route('admin.jobs.approve', $job->id) }}">
                                     <i class="fas la-check"></i> @lang('Approve')

@@ -20,6 +20,8 @@ use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\PageBuilderController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\SubscriptionController;
+use App\Http\Controllers\Admin\SubscriptionTypeController;
 use App\Http\Controllers\Admin\SupportTicketController;
 use App\Http\Controllers\Admin\SystemController;
 use App\Http\Controllers\Admin\WithdrawalController;
@@ -129,6 +131,23 @@ Route::middleware('admin')->group(function () {
         });
     });
 
+    // SUBSCRIPTION
+    Route::prefix('subscription')->name('subscription.')->group(function () {
+        Route::get('/', [SubscriptionController::class, 'index'])->name('index');
+        Route::get('create', [SubscriptionController::class, 'create'])->name('create');
+        Route::post('store/{id?}', [SubscriptionController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [SubscriptionController::class, 'edit'])->name('edit');
+        Route::post('update/{id}', [SubscriptionController::class, 'update'])->name('update');
+        Route::post('delete/{id}', [SubscriptionController::class, 'delete'])->name('delete');
+
+        Route::get('type', [SubscriptionTypeController::class, 'index'])->name('type.index');
+        Route::get('type/create', [SubscriptionTypeController::class, 'create'])->name('type.create');
+        Route::post('type/store/{id?}', [SubscriptionTypeController::class, 'store'])->name('type.store');
+        Route::get('type/edit/{id}', [SubscriptionTypeController::class, 'edit'])->name('type.edit');
+        Route::post('type/update/{id}', [SubscriptionTypeController::class, 'update'])->name('type.update');
+        Route::post('type/delete/{id}', [SubscriptionTypeController::class, 'delete'])->name('type.delete');
+
+    });
     // DEPOSIT SYSTEM
     Route::prefix('deposit')->name('deposit.')->group(function () {
         Route::get('all/{user_id?}', [DepositController::class, 'deposit'])->name('list');

@@ -67,7 +67,7 @@
                             @php echo $withdraw->statusBadge @endphp
                         </td>
                         <td>
-                            <button class="btn btn-sm btn--base btn--sm detailBtn" data-user_data="{{ json_encode($withdraw->withdraw_information) }}" @if ($withdraw->status == Status::PAYMENT_REJECT) data-admin_feedback="{{ $withdraw->admin_feedback }}" @endif>
+                            <button class="btn btn-sm btn--base btn--sm detailBtn" data-user_data="{{ json_encode($withdraw->withdraw_information) }}" @if ($withdraw->status == App\Constants\Status::PAYMENT_REJECT) data-admin_feedback="{{ $withdraw->admin_feedback }}" @endif>
                                 <i class="la la-desktop"></i>
                             </button>
                         </td>

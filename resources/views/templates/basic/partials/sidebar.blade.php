@@ -86,9 +86,9 @@
 
             <li><a href="javascript:void(0)">@lang('Support Ticket')</a>
                 <ul class="sidebar__submenu">
-                    <li><a href="{{ route('ticket.open') }}" class="{{ menuActive('ticket.open') }}">@lang('Create Ticket')</a></li>
+                    {{-- <li><a href="{{ route('ticket.open') }}" class="{{ menuActive('ticket.open') }}">@lang('Create Ticket')</a></li>
                     <li><a href="{{ route('ticket.index') }}" class="{{ menuActive(['ticket.index', 'ticket.view']) }}">@lang('Ticket History')</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 

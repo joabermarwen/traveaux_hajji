@@ -42,7 +42,7 @@
                                 </div>
                             @endif
                         @else
-                            @if ($job->proves->where('user_id', auth()->id())->where('status', Status::JOB_PROVE_REJECT)->count())
+                            @if ($job->proves->where('user_id', auth()->id())->where('status', App\Constants\Status::JOB_PROVE_REJECT)->count())
                                 <div class="job__details__widget">
                                     <h4 class="job__details__widget-title text-center text--base mb-0">
                                         @lang('Your job prove has been rejected, you can\'t resubmit any job prove')

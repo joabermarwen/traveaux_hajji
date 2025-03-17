@@ -62,17 +62,17 @@
                         </td>
                         <td>
                             @php
-                                $isEnable = $job->status == Status::JOB_REJECTED || $job->status == Status::JOB_COMPLETED;
+                                $isEnable = $job->status == Status::JOB_REJECTED || $job->status == App\Constants\Status::JOB_COMPLETED;
                             @endphp
                             <div class="d-flex flex-wrap table-icon">
                                 <a href="{{ !$isEnable ? route('user.job.edit', $job->id) : 'javascript:void(0)' }}" class="text--success me-2 {{ $isEnable ? 'disabled' : '' }} " @if (!$isEnable) data-bs-toggle="tooltip" title="Edit" @endif>
                                     <i class="lar la-edit"></i>
                                 </a>
-                                @if ($job->status == Status::JOB_PAUSE)
+                                @if ($job->status == App\Constants\Status::JOB_PAUSE)
                                     <a href="JavaScript:void(0)" class="text--base statusBtn me-2 confirmationBtn" data-bs-toggle="tooltip" data-action="{{ route('user.job.status', $job->id) }}" data-question="@lang('Are you sure to approve this job ')" title="@lang('Approve')">
                                         <i class="las la-check-circle"></i>
                                     </a>
-                                @elseif($job->status == Status::JOB_APPROVED)
+                                @elseif($job->status == App\Constants\Status::JOB_APPROVED)
                                     <a href="JavaScript:void(0)" class="text--warning statusBtn me-2 confirmationBtn" data-bs-toggle="tooltip" data-action="{{ route('user.job.status', $job->id) }}" data-question="@lang('Are you sure to paused this job ')" title="@lang('Paused')">
                                         <i class="las la-pause-circle"></i>
                                     </a>

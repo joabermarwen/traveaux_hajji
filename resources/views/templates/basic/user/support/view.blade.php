@@ -12,7 +12,7 @@
                     @php echo $myTicket->statusBadge; @endphp
                     [@lang('Ticket')#{{ $myTicket->ticket }}] {{ $myTicket->subject }}
                 </h5>
-                @if ($myTicket->status != Status::TICKET_CLOSE && $myTicket->user)
+                @if ($myTicket->status != App\Constants\Status::TICKET_CLOSE && $myTicket->user)
                     <button class="btn btn--danger close-button btn--sm confirmationBtn" type="button"
                         data-question="@lang('Are you sure to close this ticket?')" data-action="{{ route('ticket.close', $myTicket->id) }}"><i
                             class="fa fa-lg fa-times-circle"></i>

@@ -10,6 +10,8 @@ use App\Models\JobPost;
 use App\Models\Language;
 use App\Models\Page;
 use App\Models\SubCategory;
+use App\Models\Subscription;
+use App\Models\SubscriptionType;
 use App\Models\SupportMessage;
 use App\Models\SupportTicket;
 use Carbon\Carbon;
@@ -319,5 +321,32 @@ class SiteController extends Controller
             }
         }
         return $jobs;
+    }
+
+    public function subscriptions()
+    {
+        $pageTitle  = trans_case("Subscriptions");
+        $subscription_types = SubscriptionType::with('subscriptions')->whereHas('subscriptions')->select('id','type','validity')->get();
+        $subscriptions = Subscription::with(['features','subscription_type'])->latest()->select(['id','subscription_type_id','title','logo','price'])->where('status',1)->paginate(getPaginate());
+        return view('Template::subscription',compact('pageTitle','subscription_types','subscriptions'));
+    }
+    public function filter_subscriptions(Request $request)
+    {
+
+        $type_id = $request->type_id;
+        if ($type_id == 'all') {
+            $subscriptions = Subscription::with(['features','subscription_type'])
+                ->latest()
+                ->select(['id','subscription_type_id','title','logo','price'])
+                ->where('status',1)
+                ->paginate(18);
+        }else {
+            $subscriptions = Subscription::with(['features','subscription_type'])
+                ->latest()->select(['id','subscription_type_id','title','logo','price'])
+                ->where('subscription_type_id',$type_id)
+                ->where('status',1)
+                ->get();
+        }
+        return $subscriptions->count() >= 1 ? view('templates.basic.subscription-box', compact(['subscriptions','type_id']))->render() :  response()->json(['status' => 'nothing']);
     }
 }

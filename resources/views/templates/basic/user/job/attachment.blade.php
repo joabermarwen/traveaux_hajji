@@ -38,7 +38,7 @@
                     </li>
                     <li>
                         <div class="d-flex flex-wrap w-100" style="gap:7px">
-                            @if ($prove->status == Status::JOB_PROVE_PENDING)
+                            @if ($prove->status == App\Constants\Status::JOB_PROVE_PENDING)
                                 <button href="javascript:void(0)" class="btn btn--base btn--sm confirmationBtn" data-action="{{ route('user.job.approve', encrypt($prove->id)) }}" data-question="@lang('Are you sure to approve job?')">
                                     <i class="las la-check"></i>
                                     @lang('Approve')
@@ -47,7 +47,7 @@
                                     <i class="las la-times"></i>
                                     @lang('Reject')
                                 </button>
-                            @elseif($prove->status == Status::JOB_PROVE_APPROVE)
+                            @elseif($prove->status == App\Constants\Status::JOB_PROVE_APPROVE)
                                 <span class="badge badge--success">@lang('Approved')</span>
                             @else
                                 <span class="badge badge--danger">@lang('Rejected')</span>
