@@ -127,10 +127,10 @@ class SubscriptionController extends Controller
             SubscriptionFeature::insert($arr);
             $message = trans_case('Subscription Successfully Updated');
             DB::commit();
+            $notify[] = ["success", $message];
+            return back()->withNotify($notify);
 
         }catch(Exception $e){}
-        $notify[] = ["success", $message];
-        return back()->withNotify($notify);
     }
     public function delete($id){
         Subscription::findOrFail($id)->delete();
