@@ -28,7 +28,8 @@ class ProcessController extends Controller
         // Creating an environment
         $clientId = $paypalAcc->clientId->value;
         $clientSecret = $paypalAcc->clientSecret->value;
-        $environment = new ProductionEnvironment($clientId, $clientSecret);
+        $environment = new SandboxEnvironment($clientId, $clientSecret);
+        //$environment = new ProductionEnvironment($clientId, $clientSecret);
         $client = new PayPalHttpClient($environment);
         $request = new OrdersCreateRequest();
         $request->prefer('return=representation');
