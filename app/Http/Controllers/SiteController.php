@@ -428,7 +428,7 @@ class SiteController extends Controller
         try {
             // Create a new Stripe Checkout session
             $session = \Stripe\Checkout\Session::create([
-                'payment_method_types' => ['card', 'googlePay', 'applePay'],
+                'payment_method_types' => ['card'],
                 'line_items' => [[
                     'price_data' => [
                         'unit_amount' => round($deposit->final_amount, 2) * 100,  // Convert to cents
