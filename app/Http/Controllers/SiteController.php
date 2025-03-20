@@ -408,8 +408,8 @@ class SiteController extends Controller
                     $deposit->payment_gateway = $request->selected_payment_gateway; // Assuming Stripe
                     $deposit->subscription_id = $buy_subscription->id;
                     $response = PaypalSdkController::process($deposit);
-                    dd($response);
-                    if (!empty($response['redirect'])) {
+                    
+                    if (!empty($response['redirect_url'])) {
                         return redirect($response['redirect_url']);
                     }
                 }
