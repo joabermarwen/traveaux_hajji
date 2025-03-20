@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Deposit extends Model
 {
     //
+    protected $fillable=['user_id','method_code'];
     protected $casts = [
         'detail' => 'object'
     ];

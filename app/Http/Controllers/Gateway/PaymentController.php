@@ -217,6 +217,49 @@ class PaymentController extends Controller
         $notify[] = ['success', 'You have deposit request has been taken'];
         return to_route('user.deposit.history')->withNotify($notify);
     }
+    public function stripeSuccess(Request $request)
+    {
+        $session_id = $request->get('session_id');
+        $session = \Stripe\Checkout\Session::retrieve($session_id);
 
+        // Retrieve the deposit using the session ID
+        $deposit = Deposit::where('btc_wallet', $session->id)->first();
+
+        // Update the deposit status after successful payment
+        if ($deposit && $deposit->status == Status::PAYMENT_INITIATE) {
+            // Mark the payment as complete
+            $deposit->status = Status::PAYMENT_SUCCESS;
+            $deposit->save();
+
+            // Call any additional methods to update the user’s subscription or balance
+            PaymentController::userDataUpdate($deposit);
+            $pageTitle= trans_case('Paid with success');
+            return view('templates.basic.stripe.success',compact('pageTitle'));  // Return a success view
+        }
+        $pageTitle= trans_case('Error while processing payment');
+        return view('templates.basic.stripe.error',compact('pageTitle'));  // In case the payment couldn't be completed
+    }
+
+/*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * Display the payment cancellation view.
+     *
+     * This method is responsible for returning the view that informs
+     * the user that their payment has been canceled. It is typically
+     * invoked when a user cancels a payment process.
+     *
+     * @return \Illuminate\View\View
+     */
+
+/******  8bc1aa28-98d5-46ef-96ce-48c21c0a7d65  *******/
+    public function stripeCancel()
+    {
+        $pageTitle= trans_case('Payment cancled');
+        return view('templates.basic.stripe.cancel',compact('pageTitle'));  // Return a cancel view
+    }
+    public function stripeError(){
+        $pageTitle= trans_case('Error while processing payment');
+        return view('templates.basic.stripe.error',compact('pageTitle'));
+    }
 
 }

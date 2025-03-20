@@ -20,7 +20,7 @@
                         <div class="single-checkbox">
                             <div class="checkbox-inlines">
                                 <label class="checkbox-label load_after_login" for="choose">
-                                    @if (Auth::check() && Auth::user()->user_wallet?->balance > 0)
+                                    {{-- @if (Auth::check() && Auth::user()->user_wallet?->balance > 0)
                                         {!! \App\Helper\PaymentGatewayList::renderWalletForm() !!}
                                         <span class="wallet-balance mt-2 d-block">{{ __('Wallet Balance:') }}
                                             <strong
@@ -29,8 +29,24 @@
                                         <span class="display_balance"></span>
                                         <br>
                                         <span class="deposit_link"></span>
-                                    @endif
-                                    {!! \App\Helper\PaymentGatewayList::renderPaymentGatewayForForm(false) !!}
+                                    @endif --}}
+                                    @php
+                                        $gateways = App\Models\Gateway::automatic()->with('currencies')->where('status', 1)->get();
+                                        
+                                    @endphp
+                                    <div class="payment-gateway-wrapper payment_getway_image">
+                                        <input type="hidden" name="selected_payment_gateway">
+                                        <ul>
+                                            @foreach ($gateways as $gateway)
+                                                <li data-gateway="{{$gateway->name}}">
+                                                    <div class="img-select">
+                                                        <img src="{{getImage(getFilePath('gateway'). '/' .$gateway->image) }}" style="width: 350px;" alt="{{$gateway->name}}">
+                                                    </div>
+                                                </li>
+
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </label>
                             </div>
                         </div>
@@ -39,7 +55,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn-profile btn-outline-gray btn-hover-danger"
                         data-bs-dismiss="modal">{{ __('Close') }}</button>
-                    @if (Auth::guard('web')->check() && Auth::guard('web')->user()->user_type == 2)
+                    @if (Auth::guard('web')->check())
                         <button type="submit" class="btn-profile btn-bg-1 buy_subscription" id="confirm_buy_subscription_load_spinner">{{ __('Buy Now') }} <span id="buy_subscription_load_spinner"></span></button>
                     @endif
                 </div>

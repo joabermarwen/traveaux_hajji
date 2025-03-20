@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Constants\Status;
 use App\Models\AdminNotification;
 use App\Models\Category;
+use App\Models\Deposit;
 use App\Models\Frontend;
+use App\Models\Gateway;
+use App\Models\GatewayCurrency;
 use App\Models\JobPost;
 use App\Models\Language;
 use App\Models\Page;
@@ -14,11 +17,13 @@ use App\Models\Subscription;
 use App\Models\SubscriptionType;
 use App\Models\SupportMessage;
 use App\Models\SupportTicket;
+use App\Models\UserSubscription;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
-
+use App\Http\Controllers\Gateway\PaypalSdk\ProcessController as PaypalSdkController;
 class SiteController extends Controller
 {
     //
@@ -348,5 +353,110 @@ class SiteController extends Controller
                 ->get();
         }
         return $subscriptions->count() >= 1 ? view('templates.basic.subscription-box', compact(['subscriptions','type_id']))->render() :  response()->json(['status' => 'nothing']);
+    }
+    public function buy_subscription(Request $request){
+
+        if($request->has('subscription_id')) {
+            $user = Auth::user();
+            $subscription_details = Subscription::with('subscription_type:id,validity')->select(['id','subscription_type_id','price'])
+                ->where('id',$request->subscription_id)
+                ->where('status','1')->first();
+            if($subscription_details) {
+                $expire_date = Carbon::now()->addDays($subscription_details?->subscription_type?->validity);
+                $title = __('Buy Subscription');
+                $total = $subscription_details->price;
+
+                $name = $user->first_name.' '.$user->last_name;
+                $email = $user->email;
+                $user_type = $user->user_type == 1 ? 'client' : 'freelancer';
+                $payment_status = $request->selected_payment_gateway === 'wallet' ? 'complete' : 'pending';
+                $status = $request->selected_payment_gateway === 'wallet' ? 1 : 0;
+                session()->put('user_id',$user->id);
+                session()->put('user_type',$user_type);
+                $buy_subscription = UserSubscription::create([
+                    'user_id' => $user->id,
+                    'subscription_id' => $subscription_details->id,
+                    'price' => $total,
+                    'expire_date' => $expire_date,
+                    'payment_gateway' => $request->selected_payment_gateway,
+                ]);
+                if($request->selected_payment_gateway==='Stripe Checkout'){
+
+                    $gateway = Gateway::automatic()->where('alias','StripeV3')->firstOrFail();
+
+                    $deposit = new Deposit();
+                    $deposit->user_id = $user->id;
+                    $deposit->amount = $total;
+                    $deposit->final_amount = $total;
+                    $deposit->method_currency = 'EUR'; // Change currency as needed
+                    $deposit->status = Status::PAYMENT_INITIATE;
+                    $deposit->method_code = $gateway->code;
+                    $deposit->payment_gateway = $request->selected_payment_gateway; // Assuming Stripe
+                    $deposit->subscription_id = $buy_subscription->id;
+                    $response = $this->createStripeSession($deposit);
+                    return redirect($response['checkout_url']);
+                }else if($request->selected_payment_gateway==='Paypal Express'){
+                    $gateway = Gateway::automatic()->where('alias','PaypalSdk')->firstOrFail();
+
+                    $deposit = new Deposit();
+                    $deposit->user_id = $user->id;
+                    $deposit->amount = $total;
+                    $deposit->final_amount = $total;
+                    $deposit->method_currency = 'EUR'; // Change currency as needed
+                    $deposit->status = Status::PAYMENT_INITIATE;
+                    $deposit->method_code = $gateway->code;
+                    $deposit->payment_gateway = $request->selected_payment_gateway; // Assuming Stripe
+                    $deposit->subscription_id = $buy_subscription->id;
+                    $response = PaypalSdkController::process($deposit);
+                    
+                    if (!empty($response['redirect'])) {
+                        return redirect($response['redirect_url']);
+                    }
+                }
+            }
+        }
+    }
+    private function createStripeSession($deposit)
+    {
+        $StripeAcc = Gateway::automatic()->where('alias','StripeV3')->firstOrFail();
+        $gateway_parameter = json_decode($StripeAcc->gateway_parameters);
+
+
+        // Set Stripe API Key
+        \Stripe\Stripe::setApiKey($gateway_parameter->secret_key->value);
+
+        try {
+            // Create a new Stripe Checkout session
+            $session = \Stripe\Checkout\Session::create([
+                'payment_method_types' => ['card'],
+                'line_items' => [[
+                    'price_data' => [
+                        'unit_amount' => round($deposit->final_amount, 2) * 100,  // Convert to cents
+                        'currency' => 'EUR',  // You can change the currency as needed
+                        'product_data' => [
+                            'name' => 'Subscription Payment',  // Subscription details
+                            'description' => 'Payment for subscription',
+                            'images' => [siteLogo()],
+                        ],
+                    ],
+                    'quantity' => 1,
+                ]],
+                'mode' => 'payment',
+                'cancel_url' => route('payment.cancel'),  // Route to handle canceled payments
+                'success_url' => route('payment.success', ['session_id' => '{CHECKOUT_SESSION_ID}']),  // Route to handle successful payments
+            ]);
+
+            // Save Stripe session ID in the deposit record for later reference
+            $deposit->btc_walet = $session->id;
+            $deposit->save();
+
+            // Return the checkout session URL
+            return [
+                'checkout_url' => $session->url
+            ];
+        } catch (\Stripe\Exception\ApiErrorException $e) {
+            // Handle any Stripe API errors
+            return response()->json(['error' => $e->getMessage()]);
+        }
     }
 }

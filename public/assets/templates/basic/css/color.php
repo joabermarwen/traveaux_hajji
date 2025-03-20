@@ -261,6 +261,13 @@ div[class*=col]:nth-child(2) .single-pricing .btn-wrapper .cmn-btn {
   color: #fff;
 }
 
+.payment_getway_image>ul li.selected:after {
+    background: <?php echo $color; ?>;
+}
+.payment_getway_image>ul li.selected {
+    border-color: <?php echo $color; ?>;
+}
+
 /* Convert HEX to RGB */
 <?php
 function hex2rgb($hex) {

@@ -12,20 +12,22 @@ use App\Http\Controllers\Gateway\PaypalSdk\Orders\OrdersCaptureRequest;
 use App\Http\Controllers\Gateway\PaypalSdk\Orders\OrdersCreateRequest;
 use App\Http\Controllers\Gateway\PaypalSdk\PayPalHttp\HttpException;
 use App\Models\Deposit;
+use App\Models\Gateway;
 
 class ProcessController extends Controller
 {
 
     public static function process($deposit)
     {
-        $paypalAcc = json_decode($deposit->gatewayCurrency()->gateway_parameter);
-
+        $pplaccount=Gateway::automatic()->where('alias','PaypalSdk')->firstOrFail();
+        $paypalAcc = json_decode($pplaccount->gateway_parameters);
+        //dd($paypalAcc);
 
 
 
         // Creating an environment
-        $clientId = $paypalAcc->clientId;
-        $clientSecret = $paypalAcc->clientSecret;
+        $clientId = $paypalAcc->clientId->value;
+        $clientSecret = $paypalAcc->clientSecret->value;
         $environment = new ProductionEnvironment($clientId, $clientSecret);
         $client = new PayPalHttpClient($environment);
         $request = new OrdersCreateRequest();
@@ -48,7 +50,7 @@ class ProcessController extends Controller
         try {
             $response = $client->execute($request);
 
-               $deposit->btc_wallet = $response->result->id;
+               $deposit->btc_walet = $response->result->id;
                $deposit->save();
 
             $send['redirect'] = true;
@@ -67,7 +69,7 @@ class ProcessController extends Controller
         $request->prefer('return=representation');
 
         try {
-            $deposit = Deposit::where('btc_wallet',$_GET['token'])->where('status',Status::PAYMENT_INITIATE)->firstOrFail();
+            $deposit = Deposit::where('btc_walet',$_GET['token'])->where('status',Status::PAYMENT_INITIATE)->firstOrFail();
             $paypalAcc = json_decode($deposit->gatewayCurrency()->gateway_parameter);
             $clientId = $paypalAcc->clientId;
             $clientSecret = $paypalAcc->clientSecret;

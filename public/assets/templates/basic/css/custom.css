@@ -903,3 +903,86 @@ button .spinner-border {
 
 
 
+/*Payment gateway */
+.payment_getway_image>ul {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+  }
+
+  .payment_getway_image>ul li {
+    width: calc(100% / 4 - 7.5px);
+    border: 1px solid #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  
+
+  .payment_getway_image>ul li.selected:after {
+    content: "\f00c";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 12px;
+    height: 18px;
+    width: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    color: #fff;
+    left: 0px;
+    top: 0px;
+    z-index: 9;
+
+    transition: all .3s;
+  }
+  .img-select.selected {
+    border: 3px solid #007bff;
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+}
+
+.img-select {
+    margin-bottom: 20px;
+    box-shadow: 0 0 30px 0 #eee;
+    cursor: pointer;
+}
+
+.img-select.selected:after {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    z-index: 1;
+    color: #fff;
+    content: "\f058";
+    font-size: 30px;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    line-height: 30px;
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    padding-left: 5px;
+    padding-top: 4px;
+}
+.img-select {
+    width: 100%;
+    max-width: 350px; /* Ensure the div doesn't exceed the image width */
+    overflow: hidden; /* Prevent overflow */
+    text-align: center; /* Center the image horizontally */
+}
+
+.img-select img {
+    max-width: 100%; /* Prevent the image from overflowing */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove inline spacing */
+    margin: 0 auto; /* Center the image */
+}
+

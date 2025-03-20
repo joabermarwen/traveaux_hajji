@@ -14,6 +14,7 @@ Route::controller(SiteController::class)->group(function () {
     //subscriptions
     Route::get('/subscriptions/all', 'subscriptions')->name('subscription.index');
     Route::get('/subscriptions/filter', 'filter_subscriptions')->name('subscription.filter');
+    Route::post('/buy-subscription', 'buy_subscription')->name('subscription.buy');
 
     // Language Change Route
     Route::get('/change/{lang?}', 'changeLanguage')->name('lang');

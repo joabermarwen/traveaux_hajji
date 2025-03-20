@@ -30,6 +30,7 @@ class SubscriptionController extends Controller
     public function store(Request $request)
     {
 
+
             $request->validate([
                 'type'=> 'required',
                 'title'=> ['required',Rule::unique('subscriptions')->where(fn ($query) => $query->where('subscription_type_id', request()->type)),'max:191'],
@@ -54,7 +55,6 @@ class SubscriptionController extends Controller
                     'price' => $request->price,
                     'logo' => $logo,
                 ]);
-
                 $arr = [];
                 foreach($request->feature as $key => $attr) {
                     $arr[] = [
@@ -70,7 +70,6 @@ class SubscriptionController extends Controller
                 SubscriptionFeature::insert($arr);
                 $message = trans_case('New Subscription Successfully Added');
                 DB::commit();
-
                 $notify[] = ["success", $message];
                 return back()->withNotify($notify);
             }catch(Exception $e){}

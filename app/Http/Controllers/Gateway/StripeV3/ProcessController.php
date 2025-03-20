@@ -8,7 +8,7 @@ use App\Models\GatewayCurrency;
 use App\Http\Controllers\Gateway\PaymentController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Models\Gateway;
 
 class ProcessController extends Controller
 {
@@ -54,11 +54,11 @@ class ProcessController extends Controller
 
     public function ipn(Request $request)
     {
-        $StripeAcc = GatewayCurrency::where('gateway_alias','StripeV3')->orderBy('id','desc')->first();
+        $StripeAcc = Gateway::automatic()->where('alias','StripeV3')->firstOrFail();
         $gateway_parameter = json_decode($StripeAcc->gateway_parameter);
 
 
-        \Stripe\Stripe::setApiKey($gateway_parameter->secret_key);
+        \Stripe\Stripe::setApiKey($gateway_parameter->secret_key->value);
 
         // You can find your endpoint's secret in your webhook settings
         $endpoint_secret = $gateway_parameter->end_point; // main
@@ -84,7 +84,8 @@ class ProcessController extends Controller
         // Handle the checkout.session.completed event
         if ($event->type == 'checkout.session.completed') {
             $session = $event->data->object;
-            $deposit = Deposit::where('btc_wallet',  $session->id)->orderBy('id', 'DESC')->first();
+
+            $deposit = Deposit::where('btc_walet',  $session->id)->orderBy('id', 'DESC')->first();
 
             if($deposit->status==Status::PAYMENT_INITIATE){
                 PaymentController::userDataUpdate($deposit);

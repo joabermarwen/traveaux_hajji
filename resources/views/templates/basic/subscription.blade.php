@@ -28,7 +28,9 @@
         <!-- Pricing area end -->
     </main>
     @include('templates.basic.login-markup')
+    @include('templates.basic.gateway-markup')
 @endsection
 @push('script')
+    @include('templates.basic.gateway-js')
     @include('templates.basic.subscription-js')
 @endpush

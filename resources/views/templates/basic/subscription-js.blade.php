@@ -27,7 +27,8 @@
                 let subscription_id = $(this).data('id');
                 let subscription_price = $(this).data('price');
 
-
+                $('#subscription_id').val(subscription_id);
+                $('#subscription_price').val(subscription_price);
 
             });
 
@@ -55,7 +56,7 @@
                             location.reload();
 
                             $('#loginModal').modal('hide');
-                            
+
                         }
                         if(res.status == 'failed'){
                             erContainer.html('<div class="alert alert-danger">'+res.msg+'</div>');

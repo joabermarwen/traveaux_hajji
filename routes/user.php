@@ -152,6 +152,13 @@ Route::middleware('auth')->name('user.')->group(function () {
                     Route::get('manual', 'manualDepositConfirm')->name('manual.confirm');
                     Route::post('manual', 'manualDepositUpdate')->name('manual.update');
                 });
+
         });
     });
+
+});
+Route::controller(PaymentController::class)->prefix('payment')->name('payment.')->group(function(){
+    Route::get('success','stripeSuccess')->name('success');
+    Route::get('cancel','stripeCancel')->name('cancel');
+    Route::get('error','stripeError')->name('error');
 });
