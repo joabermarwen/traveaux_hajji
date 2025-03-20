@@ -409,7 +409,6 @@ class SiteController extends Controller
                     $deposit->subscription_id = $buy_subscription->id;
                     $response = PaypalSdkController::process($deposit);
                     $response = json_decode($response, true);
-                    dd($response['redirect_url']);
                     if (!empty($response['redirect_url'])) {
                         return redirect($response['redirect_url']);
                     }
