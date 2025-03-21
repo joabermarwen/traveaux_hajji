@@ -36,8 +36,8 @@ class ProcessController extends Controller
                     'quantity' => 1,
                 ]],
                 'mode' => 'payment',
-                'cancel_url' => route('home').$deposit->failed_url,
-                'success_url' => route('home').$deposit->success_url,
+                'cancel_url' => route('payment.cancel',$deposit->id),
+                'success_url' => route('payment.success',$deposit->id),
             ]);
         } catch (\Exception $e) {
             $send['error'] = true;
@@ -95,4 +95,5 @@ class ProcessController extends Controller
         }
         http_response_code(200);
     }
+
 }

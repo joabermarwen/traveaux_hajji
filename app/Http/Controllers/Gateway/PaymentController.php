@@ -261,5 +261,32 @@ class PaymentController extends Controller
         $pageTitle= trans_case('Error while processing payment');
         return view('templates.basic.stripe.error',compact('pageTitle'));
     }
+    public function success($deposit_id)
+    {
+        $deposit = Deposit::findOrFail($deposit_id);
 
+        if ($deposit->status !== Status::PAYMENT_SUCCESS) {
+            $deposit->status = Status::PAYMENT_SUCCESS;
+            $deposit->save();
+        }
+        $message=trans_case("Payment successful!");
+        $notify[] = ['success', $message];
+        $url= route('home');
+        return redirect($url)->withNotify($notify);
+    }
+
+    public function cancel($deposit_id)
+    {
+        $deposit = Deposit::findOrFail($deposit_id);
+
+        if ($deposit->status !== Status::PAYMENT_INITIATE) {
+            $deposit->status = Status::PAYMENT_REJECT;
+            $deposit->save();
+        }
+
+        $message=trans_case("Payment canceled!");
+        $notify[] = ['error', $message];
+        $url= route('home');
+        return redirect($url)->withNotify($notify);
+    }
 }

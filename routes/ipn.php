@@ -32,6 +32,7 @@ use App\Http\Controllers\Gateway\Checkout\ProcessController as CheckoutControlle
 use App\Http\Controllers\Gateway\SslCommerz\ProcessController as SslCommerzController;
 use App\Http\Controllers\Gateway\Aamarpay\ProcessController as AamarpayController;
 use App\Http\Controllers\Gateway\Binance\ProcessController as BinanceController;
+use App\Http\Controllers\Gateway\PaymentController;
 
 Route::post('paypal', [PaypalController::class, 'ipn'])->name('Paypal');
 Route::get('paypal-sdk', [PaypalSdkController::class, 'ipn'])->name('PaypalSdk');
@@ -64,3 +65,6 @@ Route::any('checkout', [CheckoutController::class, 'ipn'])->name('Checkout');
 Route::post('sslcommerz', [SslCommerzController::class, 'ipn'])->name('SslCommerz');
 Route::post('aamarpay', [AamarpayController::class, 'ipn'])->name('Aamarpay');
 Route::get('binance', [BinanceController::class, 'ipn'])->name('Binance');
+
+Route::get('/payment/success/{deposit_id}', [PaymentController::class,'success'])->name('payment.success');
+Route::get('/payment/cancel/{deposit_id}', [PaymentController::class,'cancel'])->name('payment.cancel');
