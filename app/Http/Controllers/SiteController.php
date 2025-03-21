@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Gateway\PaypalSdk\ProcessController as PaypalSdkController;
+use App\Http\Controllers\Gateway\StripeV3\ProcessController as StripeV3Controller;
 class SiteController extends Controller
 {
     //
@@ -393,8 +394,13 @@ class SiteController extends Controller
                     $deposit->method_code = $gateway->code;
                     $deposit->payment_gateway = $request->selected_payment_gateway; // Assuming Stripe
                     $deposit->subscription_id = $buy_subscription->id;
-                    $response = $this->createStripeSession($deposit);
-                    return redirect($response['checkout_url']);
+                    $response= StripeV3Controller::process($deposit);
+                    $response = json_decode($response, true);
+                    if (!empty($response['session']['url'])) {
+                        return redirect($response['session']['url']);
+                    }
+                    // $response = $this->createStripeSession($deposit);
+                    // return redirect($response['checkout_url']);
                 }else if($request->selected_payment_gateway==='Paypal Express'){
                     $gateway = Gateway::automatic()->where('alias','PaypalSdk')->firstOrFail();
 

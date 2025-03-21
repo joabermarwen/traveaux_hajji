@@ -15,9 +15,11 @@ class ProcessController extends Controller
 
     public static function process($deposit)
     {
-        $StripeAcc = json_decode($deposit->gatewayCurrency()->gateway_parameter);
-        $alias = $deposit->gateway->alias;
-        \Stripe\Stripe::setApiKey("$StripeAcc->secret_key");
+        $StripeAcc = Gateway::automatic()->where('alias','StripeV3')->firstOrFail();
+        $gateway_parameter = json_decode($StripeAcc->gateway_parameters);
+        // Set Stripe API Key
+        \Stripe\Stripe::setApiKey($gateway_parameter->secret_key->value);
+        $alias ='StripeV3';
         try {
             $session = \Stripe\Checkout\Session::create([
                 'payment_method_types' => ['card'],
@@ -27,7 +29,7 @@ class ProcessController extends Controller
                         'currency' => "$deposit->method_currency",
                         'product_data'=>[
                             'name' => gs('site_name'),
-                            'description' => 'Deposit with Stripe',
+                            'description' => trans_case('Registration fees'),
                             'images' => [siteLogo()],
                         ]
                     ],
@@ -46,7 +48,7 @@ class ProcessController extends Controller
         $send['view'] = 'user.payment.'.$alias;
         $send['session'] = $session;
         $send['StripeJSAcc'] = $StripeAcc;
-        $deposit->btc_wallet = json_decode(json_encode($session))->id;
+        $deposit->btc_walet = json_decode(json_encode($session))->id;
         $deposit->save();
         return json_encode($send);
     }

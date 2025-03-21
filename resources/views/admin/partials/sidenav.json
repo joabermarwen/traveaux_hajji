@@ -67,6 +67,14 @@
                 "title": "Subscription Types",
                 "route_name": "admin.subscription.type.index",
                 "menu_active": "admin.subscription.type.index"
+            },
+            {
+                "keyword": [
+                    "User Subscriptions"
+                ],
+                "title": "User Subscriptions",
+                "route_name": "admin.subscription.users.index",
+                "menu_active": "admin.subscription.users.index"
             }
         ]
     },

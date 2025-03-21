@@ -31,7 +31,7 @@
                 </div>
                 <div class="modal-footer flex-column">
 
-                    <button type="submit" class="btn-profile extra-width btn-bg-1 login_to_buy_a_subscription">{{trans_case('Login')}}</button>
+                    <button type="submit" class="btn-profile extra-width btn-bg-1 login_to_buy_a_subscription">{{trans_case('Login')}} <span id="buy_subscription_load_spinner"></span></button>
 
                 </div>
             </div>

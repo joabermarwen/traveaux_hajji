@@ -30,7 +30,7 @@
                 @endforeach
             </ul>
             <h3 class="single-pricing-price"> {{ $subscription->price }} €
-                <sub>/{{ ucfirst($subscription->subscription_type?->type) }}</sub>
+                <sub>/{{ ucfirst(trans_case($subscription->subscription_type?->type)) }}</sub>
             </h3>
             <div class="btn-wrapper mt-4">
                 <button class="cmn-btn btn-bg-gray btn-small w-100 choose_plan" data-bs-toggle="modal"

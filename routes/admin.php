@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\SubscriptionTypeController;
 use App\Http\Controllers\Admin\SupportTicketController;
 use App\Http\Controllers\Admin\SystemController;
+use App\Http\Controllers\Admin\UserSubscriptionController;
 use App\Http\Controllers\Admin\WithdrawalController;
 use App\Http\Controllers\Admin\WithdrawMethodController;
 use Illuminate\Support\Facades\Route;
@@ -146,7 +147,8 @@ Route::middleware('admin')->group(function () {
         Route::get('type/edit/{id}', [SubscriptionTypeController::class, 'edit'])->name('type.edit');
         Route::post('type/update/{id}', [SubscriptionTypeController::class, 'update'])->name('type.update');
         Route::post('type/delete/{id}', [SubscriptionTypeController::class, 'delete'])->name('type.delete');
-
+        Route::get('users',[UserSubscriptionController::class,'index'])->name('users.index');
+        Route::post('users/status/{id}',[UserSubscriptionController::class,'updateStatus'])->name('users.status');
     });
     // DEPOSIT SYSTEM
     Route::prefix('deposit')->name('deposit.')->group(function () {

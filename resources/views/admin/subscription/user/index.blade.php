@@ -10,6 +10,7 @@
                                 <tr>
                                     <th>{{ trans_case('ID')}}</th>
                                     <th>{{ trans_case('User ID')}}</th>
+                                    <th>{{ trans_case('User')}}</th>
                                     <th>{{ trans_case('Type') }}</th>
                                     <th>{{ trans_case('Price')}}</th>
                                     <th>{{ trans_case('Payment gateway') }}</th>
@@ -25,7 +26,8 @@
                                     <tr>
                                         <td>{{ $sub->id }}</td>
                                         <td>{{ $sub->user_id }}</td>
-                                        <td>{{ $sub->subscription_type->type }}</td>
+                                        <td>{{ $sub->user->firstname.' '.$sub->user->lastname }}</td>
+                                        <td>{{ $sub->subscription->subscription_type->type }}</td>
                                         <td>{{ $sub->price }} €</td>
                                         <td>{{ $sub->payment_gateway }}</td>
                                         <td>
@@ -33,7 +35,7 @@
                                                 <span class="btn btn-danger btn-sm">{{ __('Cancel') }}</span>
                                             @elseif($sub->payment_status == 'pending')
                                                 <span class="btn btn-warning btn-sm">{{ ucfirst($sub->payment_status) }}</span>
-                                            
+
                                             @else
                                                 <span class="btn btn-success btn-sm">{{ ucfirst($sub->payment_status) }}</span>
                                             @endif
@@ -53,9 +55,10 @@
                                             </button>
                                             <div class="dropdown-menu p-0">
                                                 <a href="javascript:void(0);"
-                                                    class="dropdown-item change-status"
+                                                    class="dropdown-item confirmationBtn"
                                                     data-question="{{ trans_case('Are you sure to change the status?') }}"
-                                                    data-action="{{ route('admin.subscription.user.status', $sub->id) }}">
+                                                    data-action="{{ route('admin.subscription.users.status', $sub->id) }}"
+                                                    >
                                                         <i class="la la-toggle-on"></i> {{ trans_case('Change status') }}
                                                 </a>
 
@@ -73,12 +76,43 @@
                         </table>
                     </div>
                 </div>
-                @if ($types->hasPages())
+                @if ($all_subscriptions->hasPages())
                     <div class="card-footer py-4">
-                        @php echo paginateLinks($types) @endphp
+                        @php echo paginateLinks($all_subscriptions) @endphp
                     </div>
                 @endif
             </div>
         </div>
     </div>
+    <x-confirmation-modal />
 @endsection
+@push('breadcrumb-plugins')
+    <x-search-form placeholder="{{ trans_case('Search here...')}}" />
+   
+@endpush
+@push('script')
+    <script>
+        $(document).on('click', '.change-status', function (e) {
+            e.preventDefault();
+
+            let question = $(this).data('question');
+            let action = $(this).data('action');
+
+            if (confirm(question)) {
+                $.ajax({
+                    url: action,
+                    type: 'POST',
+                    data: { _method: 'POST', _token: '{{ csrf_token() }}' },
+                    success: function (response) {
+                        console.log(response);
+                        // alert("Type removed successfully!");
+                        location.reload(); // Reload page or update UI dynamically
+                    },
+                    error: function (xhr) {
+                        alert("Error: " + xhr.responseText);
+                    }
+                });
+            }
+        });
+    </script>
+@endpush

@@ -34,6 +34,10 @@
 
             // login
             $(document).on('click', '.login_to_buy_a_subscription', function(e){
+                $('#buy_subscription_load_spinner').html('<i class="fas fa-spinner fa-pulse"></i>')
+                setTimeout(function () {
+                    $('#buy_subscription_load_spinner').html('');
+                }, 10000);
                 e.preventDefault();
                 let username = $('#username').val();
                 let password = $('#password').val();
@@ -52,14 +56,13 @@
                         });
                     },
                     success: function(res){
-                        if(res.status=='success'){
-                            location.reload();
 
-                            $('#loginModal').modal('hide');
-
-                        }
                         if(res.status == 'failed'){
                             erContainer.html('<div class="alert alert-danger">'+res.msg+'</div>');
+                        }else{
+                            localStorage.setItem("showChoosePlanModal", "true");
+                            location.reload();
+
                         }
                     }
 
@@ -95,6 +98,11 @@
                 }
             });
         });
-
+        $(document).ready(function() {
+            if (localStorage.getItem("showChoosePlanModal") === "true") {
+                localStorage.removeItem("showChoosePlanModal"); // Remove the flag
+                $('.choose_plan').trigger('click'); // Simulate click to show modal
+            }
+        });
     })(jQuery);
 </script>

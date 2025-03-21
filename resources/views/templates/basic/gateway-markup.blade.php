@@ -7,13 +7,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4>{{ trans_case('Buy Subscription') }}</h4>
-                    {{-- @if(Auth::guard('web')->check())
-                        @if(Auth::guard('web')->user()->user_type == 1 )
-                            <x-notice.general-notice :description="__('Notice: Please login as a freelancer to buy a subscription.')" />
-                        @else
-                            <h4>{{ __('Buy Subscription') }}</h4>
-                        @endif
-                    @endif --}}
+
                 </div>
                 <div class="modal-body">
                     <div class="confirm-payment payment-border">
@@ -32,13 +26,16 @@
                                     @endif --}}
                                     @php
                                         $gateways = App\Models\Gateway::automatic()->with('currencies')->where('status', 1)->get();
-                                        
+
                                     @endphp
                                     <div class="payment-gateway-wrapper payment_getway_image">
-                                        <input type="hidden" name="selected_payment_gateway">
+                                        <input type="hidden" name="selected_payment_gateway" value="{{ $gateways[0]?->name }}">
                                         <ul>
                                             @foreach ($gateways as $gateway)
-                                                <li data-gateway="{{$gateway->name}}">
+                                                @php
+                                                     $class = ($gateways[0]?->name == $gateway->name) ? "selected active" : '';
+                                                @endphp
+                                                <li data-gateway="{{$gateway->name}}" @if($class!=='') class="{{$class}}" @endif>
                                                     <div class="img-select">
                                                         <img src="{{getImage(getFilePath('gateway'). '/' .$gateway->image) }}" style="width: 350px;" alt="{{$gateway->name}}">
                                                     </div>
@@ -54,9 +51,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-profile btn-outline-gray btn-hover-danger"
-                        data-bs-dismiss="modal">{{ __('Close') }}</button>
+                        data-bs-dismiss="modal">{{ trans_case('Close') }}</button>
                     @if (Auth::guard('web')->check())
-                        <button type="submit" class="btn-profile btn-bg-1 buy_subscription" id="confirm_buy_subscription_load_spinner">{{ __('Buy Now') }} <span id="buy_subscription_load_spinner"></span></button>
+                        <button type="submit" class="btn-profile btn-bg-1 buy_subscription" id="confirm_buy_subscription_load_spinner">{{ trans_case('Buy Now') }} <span id="buy_subscription_load_spinner"></span></button>
                     @endif
                 </div>
             </div>

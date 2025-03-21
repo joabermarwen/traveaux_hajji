@@ -40,7 +40,7 @@
                                                 <i class="las la-pen"></i> {{ trans_case('Edit')}}
                                             </a>
                                             <a href="javascript:void(0);"
-                                                class="dropdown-item remove-subscription"
+                                                class="dropdown-item confirmationBtn"
                                                 data-question="{{ trans_case('Are you sure to remove this subscription?') }}"
                                                 data-action="{{ route('admin.subscription.delete', $sub->id) }}">
                                                     <i class="la la-trash"></i> {{ trans_case('Remove') }}
@@ -66,6 +66,7 @@
         </div>
     </div>
 </div>
+<x-confirmation-modal />
 @endsection
 @push('breadcrumb-plugins')
     <x-search-form placeholder="{{ trans_case('Search here...')}}" />
@@ -73,28 +74,4 @@
         <i class="las la-plus"></i>{{trans_case('Add New') }}
     </a>
 @endpush
-@push('script')
-    <script>
-        $(document).on('click', '.remove-subscription', function (e) {
-            e.preventDefault();
 
-            let question = $(this).data('question');
-            let action = $(this).data('action');
-
-            if (confirm(question)) {
-                $.ajax({
-                    url: action,
-                    type: 'POST',
-                    data: { _method: 'DELETE', _token: '{{ csrf_token() }}' },
-                    success: function (response) {
-                        alert("Type removed successfully!");
-                        location.reload(); // Reload page or update UI dynamically
-                    },
-                    error: function (xhr) {
-                        alert("Error: " + xhr.responseText);
-                    }
-                });
-            }
-        });
-    </script>
-@endpush
