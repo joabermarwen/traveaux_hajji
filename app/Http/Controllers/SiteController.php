@@ -394,6 +394,7 @@ class SiteController extends Controller
                     $deposit->method_code = $gateway->code;
                     $deposit->payment_gateway = $request->selected_payment_gateway; // Assuming Stripe
                     $deposit->subscription_id = $buy_subscription->id;
+                    $deposit->save();
                     $response= StripeV3Controller::process($deposit);
                     $response = json_decode($response, true);
                     if (!empty($response['session']['url'])) {
@@ -413,6 +414,7 @@ class SiteController extends Controller
                     $deposit->method_code = $gateway->code;
                     $deposit->payment_gateway = $request->selected_payment_gateway; // Assuming Stripe
                     $deposit->subscription_id = $buy_subscription->id;
+                    $deposit->save();
                     $response = PaypalSdkController::process($deposit);
                     $response = json_decode($response, true);
                     if (!empty($response['redirect_url'])) {

@@ -66,5 +66,4 @@ Route::post('sslcommerz', [SslCommerzController::class, 'ipn'])->name('SslCommer
 Route::post('aamarpay', [AamarpayController::class, 'ipn'])->name('Aamarpay');
 Route::get('binance', [BinanceController::class, 'ipn'])->name('Binance');
 
-Route::get('/payment/success/{deposit_id}', [PaymentController::class,'success'])->name('payment.success');
-Route::get('/payment/cancel/{deposit_id}', [PaymentController::class,'cancel'])->name('payment.cancel');
+

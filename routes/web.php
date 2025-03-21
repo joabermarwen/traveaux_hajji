@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Gateway\PaymentController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 Route::get('/clear', function(){
@@ -57,4 +58,5 @@ Route::controller(SiteController::class)->group(function () {
     Route::get('/{slug}', 'pages')->name('pages');
     Route::get('/', 'index')->name('home');
 });
-
+Route::get('/payment/success/{deposit_id}', [PaymentController::class,'success'])->name('payment.success');
+Route::get('/payment/cancel/{deposit_id}', [PaymentController::class,'cancel'])->name('payment.cancel');

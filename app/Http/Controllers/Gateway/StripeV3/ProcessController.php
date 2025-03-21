@@ -36,8 +36,8 @@ class ProcessController extends Controller
                     'quantity' => 1,
                 ]],
                 'mode' => 'payment',
-                'cancel_url' => route('payment.cancel',$deposit->id),
-                'success_url' => route('payment.success',$deposit->id),
+                'cancel_url' => route('payment.cancel', ['deposit_id' => $deposit->id]),
+                'success_url' => route('payment.success', ['deposit_id' => $deposit->id]),
             ]);
         } catch (\Exception $e) {
             $send['error'] = true;
@@ -48,8 +48,10 @@ class ProcessController extends Controller
         $send['view'] = 'user.payment.'.$alias;
         $send['session'] = $session;
         $send['StripeJSAcc'] = $StripeAcc;
+        $deposit = Deposit::findOrFail($deposit->id);
         $deposit->btc_walet = json_decode(json_encode($session))->id;
         $deposit->save();
+
         return json_encode($send);
     }
 

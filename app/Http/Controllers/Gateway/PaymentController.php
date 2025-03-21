@@ -10,6 +10,7 @@ use App\Models\Deposit;
 use App\Models\GatewayCurrency;
 use App\Models\Transaction;
 use App\Models\User;
+use App\Models\UserSubscription;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -264,7 +265,10 @@ class PaymentController extends Controller
     public function success($deposit_id)
     {
         $deposit = Deposit::findOrFail($deposit_id);
-
+        $subscription= UserSubscription::findOrFail($deposit->subscription_id);
+        $subscription->payment_status="paid";
+        $subscription->status=1;
+        $subscription->save();
         if ($deposit->status !== Status::PAYMENT_SUCCESS) {
             $deposit->status = Status::PAYMENT_SUCCESS;
             $deposit->save();
@@ -278,8 +282,11 @@ class PaymentController extends Controller
     public function cancel($deposit_id)
     {
         $deposit = Deposit::findOrFail($deposit_id);
-
-        if ($deposit->status !== Status::PAYMENT_INITIATE) {
+        $subscription= UserSubscription::findOrFail($deposit->subscription_id);
+        $subscription->payment_status="cancel";
+        $subscription->status=0;
+        $subscription->save();
+        if ($deposit->status !== Status::PAYMENT_REJECT) {
             $deposit->status = Status::PAYMENT_REJECT;
             $deposit->save();
         }

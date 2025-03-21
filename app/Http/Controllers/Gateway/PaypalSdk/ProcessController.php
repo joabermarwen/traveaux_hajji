@@ -19,46 +19,48 @@ class ProcessController extends Controller
 
     public static function process($deposit)
     {
-        $pplaccount=Gateway::automatic()->where('alias','PaypalSdk')->firstOrFail();
+        $pplaccount = Gateway::automatic()->where('alias', 'PaypalSdk')->firstOrFail();
         $paypalAcc = json_decode($pplaccount->gateway_parameters);
-        //dd($paypalAcc);
 
-
-
-        // Creating an environment
         $clientId = $paypalAcc->clientId->value;
         $clientSecret = $paypalAcc->clientSecret->value;
-        $environment = new SandboxEnvironment($clientId, $clientSecret);
-        //$environment = new ProductionEnvironment($clientId, $clientSecret);
+        $environment = new SandboxEnvironment($clientId, $clientSecret);  // You can change to ProductionEnvironment if needed
         $client = new PayPalHttpClient($environment);
         $request = new OrdersCreateRequest();
         $request->prefer('return=representation');
+
         $request->body = [
-                             "intent" => "CAPTURE",
-                             "purchase_units" => [[
-                                 "reference_id" =>$deposit->trx,
-                                 "amount" => [
-                                     "value" => round($deposit->final_amount,2),
-                                     "currency_code" => $deposit->method_currency
-                                 ]
-                             ]],
-                             "application_context" => [
-                                  "cancel_url" => route('home').$deposit->failed_url,
-                                  "return_url" => route('ipn.'.$deposit->gateway->alias)
-                             ]
-                         ];
+            "intent" => "CAPTURE",
+            "purchase_units" => [[
+                "reference_id" => $deposit->trx,
+                "amount" => [
+                    "value" => round($deposit->final_amount, 2),
+                    "currency_code" => $deposit->method_currency
+                ]
+            ]],
+            "application_context" => [
+                "cancel_url" => route('payment.cancel', ['deposit_id' => $deposit->id]),  // Set the cancel URL
+                "return_url" => route('payment.success', ['deposit_id' => $deposit->id])   // Set the success URL
+            ]
+        ];
 
         try {
+            // Execute PayPal request
             $response = $client->execute($request);
 
-               $deposit->btc_walet = $response->result->id;
-               $deposit->save();
+            // Store PayPal payment details (like the Stripe session ID)
+            $deposit = Deposit::findOrFail($deposit->id);
+            $deposit->btc_walet = $response->result->id; // PayPal transaction ID
+            $deposit->save();
 
+            // Prepare the redirect URL
             $send['redirect'] = true;
-            $send['redirect_url'] = $response->result->links[1]->href;
-        }catch (HttpException $ex) {
+            $send['redirect_url'] = $response->result->links[1]->href; // PayPal redirect URL
+
+        } catch (HttpException $ex) {
+            // Handle error if PayPal request fails
             $send['error'] = true;
-            $send['message'] = 'Failed to process with api';
+            $send['message'] = 'Failed to process with PayPal API';
         }
 
         return json_encode($send);
